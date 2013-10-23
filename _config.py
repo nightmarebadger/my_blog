@@ -24,7 +24,7 @@ site.url = "http://www.natan.termitnjak.net/"
 ## site.author -- Your name, the author of the website.
 # This is optional. If set to anything other than None, the
 # simple_blog template creates a meta tag for the site author.
-site.author = "Natan Zabkar"
+site.author = u"Natan Žabkar"
 
 #### Blog Settings ####
 blog = plugins.blog
@@ -74,7 +74,13 @@ filters.markdown.extensions.tables.enabled = True
 ## My settings:
 blog.auto_permalink.enabled = True
 blog.auto_permalink.path = ":blog_path/:year/:month/:day/:title"
-blog.disqus.enabled = False
+blog.disqus.enabled = True
+blog.disqus.name = "natanblogdev"
+## We disable the excerpts and use our custom code in "post_excerpt.mako" since
+## the official code doesn't play well with syntax highlighters. Another
+## workaround for the syntax highlighters problem is in post.mako
+blog.post_excerpts.enabled = False
+blog.post_excerpts.word_length = 200
 
 def pre_build():
     import locale

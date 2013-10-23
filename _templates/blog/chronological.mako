@@ -1,6 +1,8 @@
 <%inherit file="bf_base_template" />
+<%self:filter chain="syntax_highlight">
+
 % for post in posts:
-  <%include file="post.mako" args="post=post" />
+  <%include file="post_excerpt.mako" args="post=post" />
 % if bf.config.blog.disqus.enabled:
   <div class="after_post"><a href="${post.permalink}#disqus_thread">Read and Post Comments</a></div>
 % endif
@@ -10,8 +12,10 @@
  <a href="${prev_link}">« Previous Page</a>
 % endif
 % if prev_link and next_link:
-  --  
+  --
 % endif
 % if next_link:
  <a href="${next_link}">Next Page »</a>
 % endif
+
+</%self:filter>

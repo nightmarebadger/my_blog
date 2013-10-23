@@ -8,6 +8,5 @@ Welcome to Blogofile
 Under construction and in the process of being bootstraped :).
 
 Please ignore the test posts.
-
 </%self:filter>
 </article>
