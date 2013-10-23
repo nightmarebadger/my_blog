@@ -43,7 +43,7 @@ blog.path = "/blog"
 
 ## blog_name -- Your Blog's name.
 # This is used repeatedly in default blog templates
-blog.name = "My Blogofile Blog"
+blog.name = "My Development Blog"
 
 ## HTML5 example customizes the blog templates.
 ## Delete this setting to use the default ones instead.
@@ -51,7 +51,7 @@ blog.template_path = "_templates/blog"
 
 ## blog_description -- A short one line description of the blog
 # used in the RSS/Atom feeds.
-blog.description = "Just a simple technical blog"
+blog.description = "One of the many ..."
 
 ## blog_timezone -- the timezone that you normally write your blog posts from
 blog.timezone = "Europe/Ljubljana"
