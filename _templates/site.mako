@@ -12,24 +12,25 @@
 ${self.head()}
 </head>
   <body>
-    <div id="container" class="container container_12">
-      <div id="main" role="main">
-        <div id="main_block">
-          ${self.header()}
-          <div id="prose_block" class="grid_8">
-            ${next.body()}
-          </div>
-          <div id="sidebar" class="grid_4">
-            ${self.sidebar()}
-          </div>
-          <div class="clear"></div>
+    ${self.header()}
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9">
+          ${next.body()}
+        </div>
+        <div class="col-sm-3">
+          ${self.sidebar()}
         </div>
       </div>
+    </div>
+    <div class="container">
+      <hr>
       ${self.footer()}
     </div>
     ${self.body_scripts()}
   </body>
 </html>
+
 <%def name="head()"><%include file="head.mako" /></%def>
 <%def name="header()"><%include file="header.mako" /></%def>
 <%def name="sidebar()"><%include file="sidebar.mako" /></%def>
