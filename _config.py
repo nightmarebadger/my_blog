@@ -75,3 +75,7 @@ filters.markdown.extensions.tables.enabled = True
 blog.auto_permalink.enabled = True
 blog.auto_permalink.path = ":blog_path/:year/:month/:day/:title"
 blog.disqus.enabled = False
+
+def pre_build():
+    import locale
+    locale.setlocale(locale.LC_ALL, 'en_US.utf8')

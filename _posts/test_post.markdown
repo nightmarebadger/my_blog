@@ -1,7 +1,7 @@
 ---
-categories: Test
+categories: Cat1, Cat2
 date: 2009/03/09 13:09:05
-tags: 'tag1, tag2'
+tags: tag1, tag2
 title: Test syntax highlighting
 ---
 <p>

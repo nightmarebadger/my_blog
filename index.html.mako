@@ -5,6 +5,8 @@
 Welcome to Blogofile
 ====================
 
+Under construction :).
+
 This is an example [Blogofile](http://www.blogofile.com) site that is
 optimized for HTML5 browsers.
 
