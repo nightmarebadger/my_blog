@@ -1,0 +1,25 @@
+* {
+    font-family: Arial,sans-serif !important;
+    text-transform: none !important;
+}
+
+ul {
+    float: left !important;
+    margin-left: 100px !important;
+}
+
+span.bold {
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.reveal section img.slikca {
+    border: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+span.small {
+    font-size: 50%;
+}
