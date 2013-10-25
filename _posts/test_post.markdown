@@ -1,5 +1,5 @@
 ---
-categories: Cat1, Cat2
+categories: Cat1, Cat2, abeceda, blabla, 123kajsezgodi
 date: 2009/03/09 13:09:05
 tags: tag1, tag2
 title: Test syntax highlighting

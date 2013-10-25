@@ -82,6 +82,7 @@ blog.disqus.name = "natanblogdev"
 blog.post_excerpts.enabled = False
 blog.post_excerpts.word_length = 200
 
+
 def pre_build():
     import locale
     locale.setlocale(locale.LC_ALL, 'en_US.utf8')
