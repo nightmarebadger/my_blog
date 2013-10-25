@@ -31,6 +31,7 @@
     <p class="well well-sm post-author">
       Written by: ${post.author or bf.config.site.author}
     </p>
+    ${self.post_excerpt()}
     %if bf.config.blog.disqus.enabled:
       <hr>
     %endif
@@ -39,4 +40,7 @@
 
 <%def name="post_prose(post)">
   ${post.content}
+</%def>
+<%def name="post_excerpt()">
+
 </%def>
