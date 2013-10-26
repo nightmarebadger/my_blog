@@ -7,3 +7,6 @@ p.post-author {
     margin: 0px;
     margin-top: 10px;
 }
+article.tutorials_index div.well h3 {
+    margin-top: 0px;
+}

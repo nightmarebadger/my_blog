@@ -2,9 +2,8 @@
   from ast import literal_eval
   from datetime import date
 
-  file = open('tutorials/tutorials_data.txt')
-  tutorials_data = eval(file.read())
-  file.close()
+  with open('tutorials/tutorials_data.txt') as f:
+    tutorials_data = eval(f.read())
 %>
 
 <div class="sidebar">
@@ -33,11 +32,12 @@
     </ul>
   </div>
   <div class="well">
-    <h4>Latest Tutorials</h4>
+    <h4><a href="${bf.util.site_path_helper('tutorials')}">Latest Tutorials</a></h4>
     <ul class="sidebar">
       % for tut_name, tut_data in sorted(tutorials_data.iteritems(), key = lambda x: x[1]['date'], reverse=True)[:5]:
-        <li><a href="${bf.util.site_path_helper('tutorials', tut_data['filename'])}">${tut_name}</a></li>
+        <li><a href="${bf.util.site_path_helper('tutorials', tut_data['filename'].rstrip('.md') + '.html')}">${tut_name}</a></li>
       % endfor
-
+    </ul>
+  </div>
 
 </div>

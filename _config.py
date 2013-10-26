@@ -82,6 +82,8 @@ blog.disqus.name = "natanblogdev"
 blog.post_excerpts.enabled = False
 blog.post_excerpts.word_length = 200
 
+controllers.tutorials.enabled = True
+
 
 def pre_build():
     import locale
