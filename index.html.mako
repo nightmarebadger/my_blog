@@ -6,6 +6,7 @@ Welcome to Blogofile
 ====================
 
 Under construction and in the process of being bootstraped :).
+
 Testing the (admittedly very simple) shell script to pull and build the blog.
 
 Please ignore the test posts.
