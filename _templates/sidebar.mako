@@ -35,7 +35,7 @@
     <h4><a href="${bf.util.site_path_helper(bf.config.blog.path, 'archive')}">Archives</a></h4>
     <ul class="sidebar">
       % for archive_path, archive_name, archive_post_number in bf.config.blog.archive_links:
-        <li><a href="${bf.config.blog.path}/${archive_path}/1">${archive_name}</a> <span class="badge">${archive_post_number}</span></li>
+        <li><a href="${bf.util.site_path_helper(bf.config.blog.path, archive_path, '1')}">${archive_name}</a> <span class="badge">${archive_post_number}</span></li>
       % endfor
     </ul>
   </div>
