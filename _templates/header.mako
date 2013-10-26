@@ -14,8 +14,12 @@
           render_path = bf.template_context.render_path.strip('/')
           if render_path.startswith('blog/archive'):
             return 'archive'
+          if render_path.startswith('blog/category'):
+            return 'categories'
           if render_path.startswith('blog'):
             return 'blog'
+          if render_path.startswith('tutorials'):
+            return 'tutorials'
           if render_path.startswith('./'):
             return 'home'
           return None
@@ -29,8 +33,14 @@
         <li class="${path_name == 'blog' and 'active' or ''}">
           <a href="${bf.util.site_path_helper(bf.config.blog.path)}">Blog</a>
         </li>
+        <li class="${path_name == 'categories' and 'active' or ''}">
+          <a href="${bf.util.site_path_helper(bf.config.blog.path, 'category')}">Categories</a>
+        </li>
+        <li class="${path_name == 'tutorials' and 'active' or ''}">
+          <a href="${bf.util.site_path_helper('tutorials')}">Tutorials</a>
+        </li>
         <li class="${path_name == 'archive' and 'active' or ''}">
-          <a href="${bf.util.site_path_helper(bf.config.blog.path,'archive')}">Archives</a>
+          <a href="${bf.util.site_path_helper(bf.config.blog.path, 'archive')}">Archives</a>
         </li>
       </ul>
     </div>

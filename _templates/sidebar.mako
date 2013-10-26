@@ -24,18 +24,18 @@
     </ul>
   </div>
   <div class="well">
-    <h4><a href="${bf.util.site_path_helper(bf.config.blog.path, 'archive')}">Archives</a></h4>
-    <ul class="sidebar">
-      % for archive_path, archive_name, archive_post_number in bf.config.blog.archive_links:
-        <li><a href="${bf.config.blog.path}/${archive_path}/1">${archive_name}</a> <span class="badge">${archive_post_number}</span></li>
-      % endfor
-    </ul>
-  </div>
-  <div class="well">
     <h4><a href="${bf.util.site_path_helper('tutorials')}">Latest Tutorials</a></h4>
     <ul class="sidebar">
       % for tut_name, tut_data in sorted(tutorials_data.iteritems(), key = lambda x: x[1]['date'], reverse=True)[:5]:
         <li><a href="${bf.util.site_path_helper('tutorials', tut_data['filename'].rstrip('.md') + '.html')}">${tut_name}</a></li>
+      % endfor
+    </ul>
+  </div>
+  <div class="well">
+    <h4><a href="${bf.util.site_path_helper(bf.config.blog.path, 'archive')}">Archives</a></h4>
+    <ul class="sidebar">
+      % for archive_path, archive_name, archive_post_number in bf.config.blog.archive_links:
+        <li><a href="${bf.config.blog.path}/${archive_path}/1">${archive_name}</a> <span class="badge">${archive_post_number}</span></li>
       % endfor
     </ul>
   </div>
