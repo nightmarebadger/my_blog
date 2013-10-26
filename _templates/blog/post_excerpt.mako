@@ -7,6 +7,6 @@
 </%def>
 <%def name="post_excerpt()">
   ${'''<br><p class="well well-sm post-author">
-    This is an excerpt. To see the full post, please click on the title
+    This is an excerpt. To see the full post, please click on the title.
   </p>'''}
 </%def>
