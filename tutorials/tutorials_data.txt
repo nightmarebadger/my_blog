@@ -4,4 +4,9 @@
         "date": date(2013, 10, 3),
         "filename": "Pyglet_basic.md",
     },
+    "Cocos2d - basic tutorial": {
+        "description": "A very basic Cocos2d tutorial",
+        "date": date(2013, 10, 5),
+        "filename": "Cocos2d_basic.md",
+    },
 }

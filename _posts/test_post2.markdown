@@ -4,3 +4,8 @@ tag: tag1, tag2
 title: Test post2
 ---
 Testingy testiti testy
+
+* Item
+* Item2
+    * Subitem
+    * Subitem2
