@@ -9,6 +9,10 @@
                     <h3><a href="${data['htmlname']}">${name}</a></h3>
                     <p>${data['description']}</p>
                     <span class="date">Written on: ${data['date'].strftime("%d %b %Y")}</span>
+                    % if bf.config.blog.disqus.enabled:
+                        <br>
+                        <a href="${data['htmlname']}#disqus_thread">View Comments</a>
+                    % endif
                 </div>
             </div>
             % if count % 3 == 0:

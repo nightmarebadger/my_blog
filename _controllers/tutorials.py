@@ -15,9 +15,7 @@ tutorials_dir = os.path.join("tutorials")
 
 def run():
     tutorials_data = read_tutorials()
-    tutorials_names = [(i['filename'], i['htmlname'])
-                       for i in tutorials_data.itervalues()]
-    write_tutorials(tutorials_names)
+    write_tutorials(tutorials_data)
     write_tutorials_index(tutorials_data)
 
 def read_tutorials():
@@ -34,20 +32,18 @@ def read_tutorials():
         i['htmlname'] = i['filename'].rstrip('.md') + '.html'
     return tutorials_data
 
-def write_tutorials(tutorials_names):
+def write_tutorials(tutorials_data):
     """
     Write .html files from .md ones.
 
-    :param    tutorials_names: File and HTML names
-    :type     tutorials_names: Tuple
+    :param    tutorials_data: Tutorials data
+    :type     tutorials_data: Dictionary
     """
-    for file_name, html_name in tutorials_names:
+    for tutorial in tutorials_data.itervalues():
         bf.template.materialize_template(
             "tutorial.mako",
-            os.path.join(tutorials_dir, html_name),
-            {"tutorial_name": file_name,
-             "tutorial_htmlname": html_name,
-            }
+            os.path.join(tutorials_dir, tutorial['htmlname']),
+            {"tutorial": tutorial}
         )
 
 def write_tutorials_index(tutorials_data):
