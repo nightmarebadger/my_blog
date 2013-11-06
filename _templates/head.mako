@@ -16,6 +16,6 @@
   <link rel="stylesheet" href="${bf.util.site_path_helper('css/bootstrap.min.css')}" />
   <link rel="stylesheet" href="${bf.util.site_path_helper('css/bootstrap-theme.min.css')}" />
   <link rel="stylesheet" href="${bf.util.site_path_helper('css/custom.css')}" />
-
+  <link rel="stylesheet" href="${bf.util.site_path_helper('css/custom-notebook.css')}" />
 
   <%include file="theme.mako"/>
