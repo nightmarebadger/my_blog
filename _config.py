@@ -85,6 +85,22 @@ blog.post_excerpts.word_length = 200
 controllers.tutorials.enabled = True
 
 
+import locale
+import os
+import shutil
+
 def pre_build():
-    import locale
     locale.setlocale(locale.LC_ALL, 'en_US.utf8')
+
+    # Save the git submodule info
+    if not os.path.isdir("_tmp"):
+        os.mkdir("_tmp")
+    else:
+        shutil.rmtree("_tmp")
+        os.mkdir("_tmp")
+    if os.path.isdir(os.path.join("_site",".git")):
+        shutil.move(os.path.join("_site",".git"),"_tmp")
+
+def build_finally():
+    if os.path.isdir(os.path.join("_tmp",".git")):
+        shutil.move(os.path.join("_tmp",".git"),"_site")
