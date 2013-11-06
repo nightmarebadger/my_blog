@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     >
+  <channel>
+    <title>NMB's Development Blog</title>
+    <link>http://www.natan.termitnjak.net//blog</link>
+    <description>One of the many ...</description>
+    <pubDate>Wed, 06 Nov 2013 22:20:17 GMT</pubDate>
+    <generator>Blogofile</generator>
+    <sy:updatePeriod>hourly</sy:updatePeriod>
+    <sy:updateFrequency>1</sy:updateFrequency>
+    <item>
+      <title>Test post3</title>
+      <link>http://www.natan.termitnjak.net/blog/2013/04/09/test-post3</link>
+      <pubDate>Tue, 09 Apr 2013 13:09:05 CEST</pubDate>
+      <category><![CDATA[uncategorized]]></category>
+      <guid isPermaLink="false">6dSH3DoC5iOaqPPpm6a7HdnWb6I=</guid>
+      <description>Test post3</description>
+      <content:encoded><![CDATA[<p>Testingy testiti testy</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Test post4</title>
+      <link>http://www.natan.termitnjak.net/blog/2009/03/09/test-post4</link>
+      <pubDate>Mon, 09 Mar 2009 13:09:05 CET</pubDate>
+      <category><![CDATA[uncategorized]]></category>
+      <guid isPermaLink="false">qIW7zZDR3fwgk1nANcJf7m-DV-g=</guid>
+      <description>Test post4</description>
+      <content:encoded><![CDATA[<h1 id="catch-your-husband">Catch your husband!</h1>
+<p>We will now make a very simple game, named "Catch your husband!".</p>
+<h1 id="story">Story</h1>
+<p>You are a simple housewife, but when your husband (a mafia crime lord) hasn't
+been home for dinner in two days it's time to show him who wears the pants in
+your house!</p>
+<h1 id="features">Features</h1>
+<ul>
+<li>3 different sprites (made by the very talented <strong>Tjaša Žabkar</strong>)</li>
+<li>Player movement</li>
+</ul>
+<p>...</p>
+<p>Yup, that's it. Don't worry, we will add more features soon :)</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Test post2</title>
+      <link>http://www.natan.termitnjak.net/blog/2009/03/09/test-post2</link>
+      <pubDate>Mon, 09 Mar 2009 13:09:05 CET</pubDate>
+      <category><![CDATA[uncategorized]]></category>
+      <guid isPermaLink="false">IQfWzD6vMy3vz8mLR5beJfisb9Y=</guid>
+      <description>Test post2</description>
+      <content:encoded><![CDATA[<p>Testingy testiti testy</p>
+<ul>
+<li>Item</li>
+<li>Item2<ul>
+<li>Subitem</li>
+<li>Subitem2</li>
+</ul>
+</li>
+</ul>]]></content:encoded>
+    </item>
+  </channel>
+</rss>

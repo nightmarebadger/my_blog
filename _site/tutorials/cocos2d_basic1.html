@@ -1,0 +1,763 @@
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="What-is-Cocos2d?">What is Cocos2d?<a class="anchor-link" href="#What-is-Cocos2d?">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Framework for building 2D games, demos and other graphical/interactive applications that builds on Pyglet</li>
+<li>Main features:
+<ul>
+<li><strong>Flow control</strong>: Manage the flow control between different scenes in an easy way</li>
+<li><strong>Sprites</strong>: Fast and easy sprites</li>
+<li><strong>Actions</strong>: Just tell sprites what you want them to do. Composable actions like move, rotate, scale and much more</li>
+<li><strong>Effects</strong>: Effects like waves, twirl, lens and much more</li>
+<li><strong>Tiled Maps</strong>: Support for rectangular and hexagonal tiled maps</li>
+<li><strong>Transitions</strong>: Move from scene to scene with style</li>
+<li><strong>Menus</strong>: Built in classes to create menus</li>
+<li><strong>Text Rendering</strong>: Label and HTMLLabel with action support</li>
+<li><strong>Documentation</strong>: Programming Guide + API Reference + Video Tutorials + Lots of simple tests showing how to use it</li>
+<li><strong>Built-in Python Interpreter</strong>: For debugging purposes</li>
+<li><strong>BSD License</strong>: Just use it</li>
+<li><strong>Pyglet Based</strong>: No external dependencies</li>
+<li><strong>OpenGL Based</strong>: Hardware Acceleration</li>
+</ul></li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3D-game-development-in-Cocos2d">3D game development in Cocos2d<a class="anchor-link" href="#3D-game-development-in-Cocos2d">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Cocos2d (and pyglet) by default uses a 3D projection matrix (most of the transitions and effects are actually 3D)</li>
+<li>Since we have access to OpenGL, you can use it directly to draw 3D objects</li>
+<li>You will have to make your own logic for 3D camera, 3D collision detection etc., prefferably using numpy or something similar for computations ...</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>... unless you use one of the libraries built on top of Cocos2d that support 3D development</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Cocos2d-basics">Cocos2d basics<a class="anchor-link" href="#Cocos2d-basics">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Make a Scene</li>
+<li>Add needed Sprites etc. to the Scene</li>
+<li>Run the scene with <em>cocos.director.director</em></li>
+</ul>
+<p>Cocos2d automatically takes care of drawing all Sprites that were added to a Scene, so we do not need to override the <strong>on_draw()</strong> function.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Scenes">Scenes<a class="anchor-link" href="#Scenes">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>More or less independent pieces of the app workflow, glued together by the <em>Director</em></li>
+<li>Your application can have many <em>Scenes</em> ...</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>... but only one <em>Scene</em> is active at a given time</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Example scenes:
+<ul>
+<li>Intro</li>
+<li>Menu</li>
+<li>Level</li>
+<li>Winning scene</li>
+<li>Losing scene</li>
+</ul></li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Scenes are usually further divided into Layers</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Layers">Layers<a class="anchor-link" href="#Layers">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Layers help you organise the scene on the front to back axis</li>
+<li>Usually transparent sheets where children are drawn, the scene then stacks the sheets</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Example layers:
+<ul>
+<li>Background: landscape</li>
+<li>Far: decorations</li>
+<li>Middle: gameplay elements</li>
+<li>Near: player, enemies</li>
+<li>HUD: game stats, life, etc.</li>
+</ul></li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Handling-key-presses">Handling key presses<a class="anchor-link" href="#Handling-key-presses">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Inside your Layer, set <strong>is_event_handler = True</strong></li>
+<li>Use pyglet events functions</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>When defining events in <em>Layers</em>, they will be prioritised front to back</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>You can also define your own events</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Sample-bare-bones-program">Sample bare bones program<a class="anchor-link" href="#Sample-bare-bones-program">&#182;</a></h1>
+</div>
+
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">cocos</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+    <span class="n">scene</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span>
+    <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">scene</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Translate-from-Pyglet-to-Cocos2d">Translate from Pyglet to Cocos2d<a class="anchor-link" href="#Translate-from-Pyglet-to-Cocos2d">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Define a Game layer, set it to handle events</li>
+<li>Use Cocos2d sprites and batches, add them to the game layer</li>
+<li>For player movement, use <em>Sprite.velocity</em> and the <em>Move</em> action</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">Sprite</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Add-enemy-movement">Add enemy movement<a class="anchor-link" href="#Add-enemy-movement">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>We want the enemies to move around</li>
+<li>To do this, we will use <em>cocos.actions</em> on our Sprites</li>
+<li>We will use a combination of many different actions to produce different movements</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Actions can be combined, multiplied, reversed etc.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">Sprite</span><span class="o">.</span><span class="n">do</span><span class="p">(</span> <span class="p">(</span><span class="n">MoveBy</span><span class="p">((</span><span class="mi">120</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">Delay</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="n">MoveBy</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="mi">5</span> <span class="p">)</span>
+
+<span class="n">action</span> <span class="o">=</span> <span class="n">MoveBy</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Sprite</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">action</span> <span class="o">+</span> <span class="n">Reverse</span><span class="p">(</span><span class="n">action</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Actions for moving the 6 enemy sprites</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">move_basic</span> <span class="o">=</span> <span class="n">MoveBy</span><span class="p">((</span><span class="mi">120</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">move_basic</span> <span class="o">+</span> <span class="n">Reverse</span><span class="p">(</span><span class="n">move_basic</span><span class="p">)))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">Reverse</span><span class="p">(</span><span class="n">move_basic</span><span class="p">)</span> <span class="o">+</span> <span class="n">move_basic</span><span class="p">))</span>
+
+<span class="n">move_complex</span> <span class="o">=</span> <span class="p">(</span><span class="n">MoveBy</span><span class="p">((</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+                            <span class="n">Delay</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span>
+                            <span class="n">MoveBy</span><span class="p">((</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="o">-</span><span class="mi">75</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+                            <span class="n">Delay</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span>
+                            <span class="n">MoveBy</span><span class="p">((</span><span class="mi">75</span><span class="p">,</span> <span class="o">-</span><span class="mi">75</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+                            <span class="n">Delay</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span>
+                            <span class="n">MoveBy</span><span class="p">((</span><span class="mi">75</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+                            <span class="n">Delay</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">move_complex</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">Reverse</span><span class="p">(</span><span class="n">move_complex</span><span class="p">)))</span>
+
+<span class="n">move_jump</span> <span class="o">=</span> <span class="n">AccelDeccel</span><span class="p">(</span><span class="n">JumpBy</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">move_jump_rot</span> <span class="o">=</span> <span class="n">AccelDeccel</span><span class="p">(</span><span class="n">RotateBy</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">move_jump</span> <span class="o">+</span> <span class="n">Reverse</span><span class="p">(</span><span class="n">move_jump</span><span class="p">)))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">move_jump_rot</span> <span class="o">+</span> <span class="n">Reverse</span><span class="p">(</span><span class="n">move_jump_rot</span><span class="p">)))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">Reverse</span><span class="p">(</span><span class="n">move_jump</span><span class="p">)</span> <span class="o">+</span> <span class="n">move_jump</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">Reverse</span><span class="p">(</span><span class="n">move_jump_rot</span><span class="p">)</span> <span class="o">+</span> <span class="n">move_jump_rot</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Add-collision-detection">Add collision detection<a class="anchor-link" href="#Add-collision-detection">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>We will use a simple brute force alghoritm (from cocos2d)</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Set a CollisionManager</li>
+<li>Each sprite that we want to be collideable needs to have a .cshape (circular or rectangular) property</li>
+<li>Add each sprite to the manager</li>
+<li>We will be able to use manager.objs_colliding(self.player) to get a list of every object that collides with our player</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>We also need a way to check for collisions each frame</li>
+<li>Each time we move a sprite, we need to update its .cshape property position</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Make-sprites-collideable">Make sprites collideable<a class="anchor-link" href="#Make-sprites-collideable">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Adding player to the collision manager</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">collision_manager</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">CollisionManagerBruteForce</span><span class="p">()</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">25</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">cshape</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">AARectShape</span><span class="p">(</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">width</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">height</span><span class="o">//</span><span class="mi">2</span>
+<span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">collision_manager</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Check-for-collisions-on-each-frame">Check for collisions on each frame<a class="anchor-link" href="#Check-for-collisions-on-each-frame">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will use .schedule() to schedule an update function on each frame. We do this in our layer <code>.__init__()</code></p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the update function we update all .cshape positions and check for collisions</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">cshape</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">position</span>
+    <span class="k">for</span> <span class="n">enem</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">:</span>
+        <span class="n">enem</span><span class="o">.</span><span class="n">cshape</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">enem</span><span class="o">.</span><span class="n">position</span>
+
+    <span class="n">collisions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collision_manager</span><span class="o">.</span><span class="n">objs_colliding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">collisions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boss</span> <span class="ow">in</span> <span class="n">collisions</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&quot;You won!&quot;</span><span class="p">)</span>
+        <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Add-menus">Add menus<a class="anchor-link" href="#Add-menus">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>We will use the <em>cocos.menu.Menu</em> class to add two menus, a &quot;Main menu&quot; and &quot;Options menu&quot;</li>
+<li>To make a menu:
+<ul>
+<li>Make a list of <em>cocos.menu.MenuItem</em>, which take a title and a function to call when this item is selected</li>
+<li>Call the <em><code>.create_menu()</code></em> method to create the menu</li>
+</ul></li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For the FPS toggle we use <em>cocos.menu.ToggleMenuItem</em> instead of the normal one. It takes the title, the function to call and the toggle value to show.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Main-menu">Main menu<a class="anchor-link" href="#Main-menu">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Main menu has 3 choices:</p>
+<ul>
+<li>New game: starts a new game</li>
+<li>Options: switch to the options menu</li>
+<li>Quit: quits the game</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">MainMenu</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">Menu</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span> <span class="n">MainMenu</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&#39;Catch your husband!&#39;</span><span class="p">)</span>
+
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="s">&#39;New game&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_new_game</span><span class="p">))</span>
+        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="s">&#39;Options&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_options</span><span class="p">))</span>
+        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="s">&#39;Quit&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_quit</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_menu</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_new_game</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">game_layer</span> <span class="o">=</span> <span class="n">Game</span><span class="p">()</span>
+        <span class="n">game_scene</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">game_layer</span><span class="p">)</span>
+
+        <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">game_scene</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_options</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">switch_to</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">pyglet</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Options-menu">Options menu<a class="anchor-link" href="#Options-menu">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The options menu has 3 choices:</p>
+<ul>
+<li>FPS toggle: show/hide FPS</li>
+<li>Fullscreen toggle: switch between fullscreen and windowed</li>
+<li>Back: back to main menu</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">OptionsMenu</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">Menu</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span> <span class="n">OptionsMenu</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="s">&#39;Catch your husband!&#39;</span><span class="p">)</span>
+
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">ToggleMenuItem</span><span class="p">(</span>
+            <span class="s">&#39;Show FPS:&#39;</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">on_show_fps</span><span class="p">,</span>
+            <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">show_FPS</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="s">&#39;Fullscreen&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_fullscreen</span><span class="p">))</span>
+        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">MenuItem</span><span class="p">(</span><span class="s">&#39;Back&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_quit</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_menu</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_fullscreen</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+        <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">set_fullscreen</span><span class="p">(</span>
+            <span class="ow">not</span> <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">fullscreen</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_quit</span><span class="p">(</span> <span class="bp">self</span> <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">switch_to</span><span class="p">(</span> <span class="mi">0</span> <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_show_fps</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="n">value</span> <span class="p">):</span>
+        <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">show_FPS</span> <span class="o">=</span> <span class="n">value</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Start-with-the-menu,-not-with-the-game">Start with the menu, not with the game<a class="anchor-link" href="#Start-with-the-menu,-not-with-the-game">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When the game loads, we want to open the menu, not the game. We need to change the initialisation from</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">650</span><span class="p">,</span>
+    <span class="n">caption</span><span class="o">=</span><span class="s">&quot;Catch your husband!&quot;</span>
+<span class="p">)</span>
+
+<span class="n">game_layer</span> <span class="o">=</span> <span class="n">Game</span><span class="p">()</span>
+<span class="n">game_scene</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">game_layer</span><span class="p">)</span>
+
+<span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">game_scene</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>to</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">650</span><span class="p">,</span>
+    <span class="n">caption</span><span class="o">=</span><span class="s">&quot;Catch your husband!&quot;</span>
+<span class="p">)</span>
+
+<span class="n">scene</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">MultiplexLayer</span><span class="p">(</span><span class="n">MainMenu</span><span class="p">(),</span> <span class="n">OptionsMenu</span><span class="p">()),</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">scene</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The old code for starting the game was moved to the Main menu, inside the <em><code>on_new_game()</code></em> function.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Finishing-touches">Finishing touches<a class="anchor-link" href="#Finishing-touches">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Our game still looks very &quot;bare&quot;, so let's add some simple things to spice it up! We will:</p>
+<ul>
+<li>Add a nice background to the menus</li>
+<li>Customise the menus</li>
+<li>Add sounds and music</li>
+<li>Add a nice transition when starting a new game</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Adding-a-background-to-the-menus">Adding a background to the menus<a class="anchor-link" href="#Adding-a-background-to-the-menus">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will make a background layer that will have:</p>
+<ul>
+<li>A background picture</li>
+<li>Our player sprite jumping up and down</li>
+<li>An enemy sprite moving left and right</li>
+<li>The boss (aka our player's husband) looking menacing</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">BackgroundLayer</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BackgroundLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">background</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">325</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">75</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemy</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">enemy</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemy</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">75</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">enemy</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">boss</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">boss</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.4</span>
+        <span class="n">rect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">get_rect</span><span class="p">()</span>
+        <span class="n">rect</span><span class="o">.</span><span class="n">midbottom</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">center</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">JumpBy</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemy</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span>
+            <span class="n">MoveBy</span><span class="p">((</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.25</span><span class="p">)</span> <span class="o">+</span>
+            <span class="n">MoveBy</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span>
+            <span class="n">MoveBy</span><span class="p">((</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.25</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">FadeTo</span><span class="p">(</span><span class="mi">155</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="n">FadeTo</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)))</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Add it to the scene in the initialisation</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">scene</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">MultiplexLayer</span><span class="p">(</span><span class="n">MainMenu</span><span class="p">(),</span> <span class="n">OptionsMenu</span><span class="p">()),</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BackgroundLayer</span><span class="p">(),</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">scene</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Customise-the-menus">Customise the menus<a class="anchor-link" href="#Customise-the-menus">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To customise the menus, we will:</p>
+<ul>
+<li>Change the font family, it's size and color
+<ul>
+<li>The base font will be completely white, so it is easier to see/read</li>
+<li>The selected menu item will be a nice pink color to complement our heroine</li>
+</ul></li>
+<li>Add a sound when moving around the menu</li>
+<li>Make the items shake around on selection</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">select_sound</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">menu_sound</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">font_title</span><span class="p">[</span><span class="s">&#39;font_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Edit Undo Line BRK&#39;</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">font_title</span><span class="p">[</span><span class="s">&#39;font_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">52</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">font_title</span><span class="p">[</span><span class="s">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">font_item</span><span class="p">[</span><span class="s">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">font_item_selected</span><span class="p">[</span><span class="s">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+
+<span class="o">...</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">create_menu</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">cocos</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">shake</span><span class="p">(),</span> <span class="n">cocos</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">shake_back</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Add-music">Add music<a class="anchor-link" href="#Add-music">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We want some music to be playing while we play the game. We will use &quot;tetrico.mp3&quot;, which is bundled in cocos2d examples folder.</p>
+<p>To play music we must:</p>
+<ul>
+<li>Define a <em>pyglet.media.Player()</em></li>
+<li>Start the music when we enter the game</li>
+<li>Pause and rewind it when we stop the game (go back to the menu)</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We define the player in the initialisation with</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">music_player</span> <span class="o">=</span> <span class="n">pyglet</span><span class="o">.</span><span class="n">media</span><span class="o">.</span><span class="n">Player</span><span class="p">()</span>
+<span class="n">music_player</span><span class="o">.</span><span class="n">volume</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Start and stop the music inside the Game layer</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">on_enter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">Game</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">on_enter</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">music_player</span><span class="o">.</span><span class="n">queue</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">game_music</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="n">music_player</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+
+    <span class="n">music_player</span><span class="o">.</span><span class="n">eos_action</span> <span class="o">=</span> <span class="s">&#39;loop&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">on_exit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">Game</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">on_exit</span><span class="p">()</span>
+
+    <span class="n">music_player</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">music_player</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Add-a-fancy-transition">Add a fancy transition<a class="anchor-link" href="#Add-a-fancy-transition">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To add a transition to the Game, we simply need to change the game starting code (in main menu) from</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">game_scene</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>to</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">push</span><span class="p">(</span>
+            <span class="n">FlipAngular3DTransition</span><span class="p">(</span><span class="n">game_scene</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>which will use the <em>FlipAngular3DTransition</em> transformation lasting 1 second to change the scenes.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="To-infinity-...-and-beyond!">To infinity ... and beyond!<a class="anchor-link" href="#To-infinity-...-and-beyond!">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Of course we do not have to stop here. For added ideas we could also add:</p>
+<ul>
+<li>Lives: getting hit by one of your husband henchmen doesn't knock you out immediately, but rather shows a fancy blur/wave effect eminating from your position</li>
+<li>Make a &quot;game won&quot; and &quot;game over layer&quot;</li>
+<li>Make an intro with automatically scrolling story text with background music</li>
+<li>Add some more effects ...</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>... just do not overuse them, it won't look good!</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Thank-you-for-your-attention!-:)">Thank you for your attention! :)<a class="anchor-link" href="#Thank-you-for-your-attention!-:)">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Feel-free-to-ask-any-questions?">Feel free to ask any questions?<a class="anchor-link" href="#Feel-free-to-ask-any-questions?">&#182;</a></h3>
+</div>

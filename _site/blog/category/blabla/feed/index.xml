@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     >
+  <channel>
+    <title>NMB's Development Blog</title>
+    <link>http://www.natan.termitnjak.net//blog</link>
+    <description>One of the many ...</description>
+    <pubDate>Wed, 06 Nov 2013 22:20:17 GMT</pubDate>
+    <generator>Blogofile</generator>
+    <sy:updatePeriod>hourly</sy:updatePeriod>
+    <sy:updateFrequency>1</sy:updateFrequency>
+    <item>
+      <title>Test syntax highlighting</title>
+      <link>http://www.natan.termitnjak.net/blog/2009/03/09/test-syntax-highlighting</link>
+      <pubDate>Mon, 09 Mar 2009 13:09:05 CET</pubDate>
+      <category><![CDATA[blabla]]></category>
+      <category><![CDATA[cat1]]></category>
+      <category><![CDATA[cat2]]></category>
+      <category><![CDATA[abeceda]]></category>
+      <category><![CDATA[123kajsezgodi]]></category>
+      <guid isPermaLink="false">oh7b2unzS5fwhgP2P3qoyUkOwik=</guid>
+      <description>Test syntax highlighting</description>
+      <content:encoded><![CDATA[<p>
+This tests some syntax highlighting, using the
+<a href="http://github.com/EnigmaCurry/blogofile.com/blob/master/_filters/syntax_highlight.py">
+syntax highlight</a> filter based on <a href="http://pygments.org">pygments</a>:
+</p>
+
+<p>Some Python, in the default <i>murphy</i> style:
+
+<div class="pygments_murphy syntax_highlight"><pre><span class="k">def</span> <span class="nf">test</span><span class="p">():</span><br/>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s">&quot;Hello, Python!&quot;</span><span class="p">:</span><br/>        <span class="k">print</span> <span class="n">x</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span><br/>    <span class="k">print</span> <span class="s">&quot;done&quot;</span><br/></pre></div>
+
+</p>
+
+<p>
+Some Haskell, with line numbers turned on:
+
+<table class="pygments_murphy syntax_highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1<br/>2<br/>3<br/>4<br/>5</pre></div></td><td class="code"><div class="pygments_murphy syntax_highlight"><pre><span class="nf">hamming</span> <span class="ow">=</span> <span class="mi">1</span> <span class="kt">:</span> <span class="n">map</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">)</span> <span class="n">hamming</span> <span class="p">`</span><span class="n">merge</span><span class="p">`</span> <span class="n">map</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="p">)</span> <span class="n">hamming</span> <span class="p">`</span><span class="n">merge</span><span class="p">`</span> <span class="n">map</span> <span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="p">)</span> <span class="n">hamming</span><br/>     <span class="kr">where</span> <span class="n">merge</span> <span class="p">(</span><span class="n">x</span><span class="kt">:</span><span class="n">xs</span><span class="p">)</span> <span class="p">(</span><span class="n">y</span><span class="kt">:</span><span class="n">ys</span><span class="p">)</span><br/>            <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="ow">=</span> <span class="n">x</span> <span class="kt">:</span> <span class="n">xs</span> <span class="p">`</span><span class="n">merge</span><span class="p">`</span> <span class="p">(</span><span class="n">y</span><span class="kt">:</span><span class="n">ys</span><span class="p">)</span><br/>            <span class="o">|</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="ow">=</span> <span class="n">y</span> <span class="kt">:</span> <span class="p">(</span><span class="n">x</span><span class="kt">:</span><span class="n">xs</span><span class="p">)</span> <span class="p">`</span><span class="n">merge</span><span class="p">`</span> <span class="n">ys</span><br/>            <span class="o">|</span> <span class="n">otherwise</span> <span class="ow">=</span> <span class="n">x</span> <span class="kt">:</span> <span class="n">xs</span> <span class="p">`</span><span class="n">merge</span><span class="p">`</span> <span class="n">ys</span><br/></pre></div></td></tr></table>
+
+</p>
+
+<p>
+Some javascript, using the <i>monokai</i> style and line numbers on:
+
+<table class="pygments_monokai syntax_highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></div></td><td class="code"><div class="pygments_monokai syntax_highlight"><pre><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;h1&gt;This is a header&lt;/h1&gt;&quot;</span><span class="p">);</span><br/><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span><br/>   <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span><br/>       <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;jQuery is cool!&quot;</span><span class="p">);</span><br/>   <span class="p">});</span><br/><span class="p">});</span><br/></pre></div></td></tr></table>
+
+</p>
+
+<p>
+  Some plain HTML:
+
+<div class="pygments_murphy syntax_highlight"><pre>    <span class="nt">&lt;h1&gt;</span>This is a test<span class="nt">&lt;/h1&gt;</span><br/>    <span class="nt">&lt;p&gt;</span><br/>      This is <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.blogofile.com&quot;</span><span class="nt">&gt;</span>Blogofile<span class="nt">&lt;/a&gt;</span>.<br/>    <span class="nt">&lt;/p&gt;</span><br/>    <span class="nt">&lt;p&gt;</span><br/>      Notice how in the source, <span class="nt">&lt;tags&gt;</span> don&#39;t have to be re-written<br/>      with HTML entities like some syntax highlighters out there.<br/>    <span class="nt">&lt;/p&gt;</span><br/></pre></div>
+
+</p>]]></content:encoded>
+    </item>
+  </channel>
+</rss>

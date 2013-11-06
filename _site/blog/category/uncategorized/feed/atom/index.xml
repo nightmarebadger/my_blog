@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed
+  xmlns="http://www.w3.org/2005/Atom"
+  xmlns:thr="http://purl.org/syndication/thread/1.0"
+  xml:lang="en"
+   >
+  <title type="text">NMB's Development Blog</title>
+  <subtitle type="text">One of the many ...</subtitle>
+
+  <updated>2013-11-06T22:20:17Z</updated>
+  <generator uri="http://blogofile.com/">Blogofile</generator>
+
+  <link rel="alternate" type="text/html" href="http://www.natan.termitnjak.net//blog" />
+  <id>http://www.natan.termitnjak.net//blog/feed/atom/</id>
+  <link rel="self" type="application/atom+xml" href="http://www.natan.termitnjak.net//blog/feed/atom/" />
+  <entry>
+    <author>
+      <name></name>
+      <uri>http://www.natan.termitnjak.net//blog</uri>
+    </author>
+    <title type="html"><![CDATA[Test post3]]></title>
+    <link rel="alternate" type="text/html" href="http://www.natan.termitnjak.net/blog/2013/04/09/test-post3" />
+    <id>http://www.natan.termitnjak.net/blog/2013/04/09/test-post3</id>
+    <updated>2013-04-09T13:09:05Z</updated>
+    <published>2013-04-09T13:09:05Z</published>
+    <category scheme="http://www.natan.termitnjak.net//blog" term="uncategorized" />
+    <summary type="html"><![CDATA[Test post3]]></summary>
+    <content type="html" xml:base="http://www.natan.termitnjak.net/blog/2013/04/09/test-post3"><![CDATA[<p>Testingy testiti testy</p>]]></content>
+  </entry>
+  <entry>
+    <author>
+      <name></name>
+      <uri>http://www.natan.termitnjak.net//blog</uri>
+    </author>
+    <title type="html"><![CDATA[Test post4]]></title>
+    <link rel="alternate" type="text/html" href="http://www.natan.termitnjak.net/blog/2009/03/09/test-post4" />
+    <id>http://www.natan.termitnjak.net/blog/2009/03/09/test-post4</id>
+    <updated>2009-03-09T13:09:05Z</updated>
+    <published>2009-03-09T13:09:05Z</published>
+    <category scheme="http://www.natan.termitnjak.net//blog" term="uncategorized" />
+    <summary type="html"><![CDATA[Test post4]]></summary>
+    <content type="html" xml:base="http://www.natan.termitnjak.net/blog/2009/03/09/test-post4"><![CDATA[<h1 id="catch-your-husband">Catch your husband!</h1>
+<p>We will now make a very simple game, named "Catch your husband!".</p>
+<h1 id="story">Story</h1>
+<p>You are a simple housewife, but when your husband (a mafia crime lord) hasn't
+been home for dinner in two days it's time to show him who wears the pants in
+your house!</p>
+<h1 id="features">Features</h1>
+<ul>
+<li>3 different sprites (made by the very talented <strong>Tjaša Žabkar</strong>)</li>
+<li>Player movement</li>
+</ul>
+<p>...</p>
+<p>Yup, that's it. Don't worry, we will add more features soon :)</p>]]></content>
+  </entry>
+  <entry>
+    <author>
+      <name></name>
+      <uri>http://www.natan.termitnjak.net//blog</uri>
+    </author>
+    <title type="html"><![CDATA[Test post2]]></title>
+    <link rel="alternate" type="text/html" href="http://www.natan.termitnjak.net/blog/2009/03/09/test-post2" />
+    <id>http://www.natan.termitnjak.net/blog/2009/03/09/test-post2</id>
+    <updated>2009-03-09T13:09:05Z</updated>
+    <published>2009-03-09T13:09:05Z</published>
+    <category scheme="http://www.natan.termitnjak.net//blog" term="uncategorized" />
+    <summary type="html"><![CDATA[Test post2]]></summary>
+    <content type="html" xml:base="http://www.natan.termitnjak.net/blog/2009/03/09/test-post2"><![CDATA[<p>Testingy testiti testy</p>
+<ul>
+<li>Item</li>
+<li>Item2<ul>
+<li>Subitem</li>
+<li>Subitem2</li>
+</ul>
+</li>
+</ul>]]></content>
+  </entry>
+</feed>
