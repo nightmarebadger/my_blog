@@ -42,8 +42,6 @@
 
 <%include file="${bf.util.site_path_helper('tutorials', tutorial['filename'])}" />
 
-
-
 <p class="well well-sm post-author">
   Written by: ${tutorial.get('author', '').decode('utf8') or bf.config.site.author}
 </p>
