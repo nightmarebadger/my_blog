@@ -29,7 +29,7 @@ def read_tutorials():
     with open(os.path.join(tutorials_dir, 'tutorials_data.txt')) as f:
         tutorials_data = eval(f.read())
     for i in tutorials_data.itervalues():
-        i['htmlname'] = i['filename'].rstrip('.md') + '.html'
+        i['htmlname'] = i['filename'].rstrip('.html') + '.generated.html'
     return tutorials_data
 
 def write_tutorials(tutorials_data):
