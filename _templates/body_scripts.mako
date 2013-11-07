@@ -13,12 +13,12 @@
             tmp += "<ol>";
             lastLevel += 1;
         }
-        tmp += "<li><a id='#" + current.prop('id') + "-toc' href='#" + current.prop('id') + "'>" + current.html() + "</a>";
         while (currentLevel < lastLevel) {
             tmp += "</ol>";
             lastLevel -= 1;
             tmp += "</li>";
         }
+        tmp += "<li><a id='#" + current.prop('id') + "-toc' href='#" + current.prop('id') + "'>" + current.html() + "</a>";
 
     });
 

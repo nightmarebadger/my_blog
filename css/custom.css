@@ -28,7 +28,7 @@ p.post-author {
 }
 article.tutorial_box p.toctitle {
     font-weight: bold;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 article.tutorial_box p.toctitle span {
     font-weight: normal;
@@ -49,6 +49,14 @@ article.tutorial_box img {
     max-width: 100%;
     height: auto;
 }
+article.tutorial_box figure {
+    display: block;
+    margin: 30px auto;
+}
+article.tutorial_box figure img {
+    margin: 0 auto;
+}
+
 
 article.tutorial_box h1 {
     margin-top: 35px;
