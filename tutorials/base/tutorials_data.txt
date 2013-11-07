@@ -1,0 +1,26 @@
+{
+    "Pyglet - basic tutorial": {
+        "description": """<p>In this tutorial, we will look over the basics of
+                          Pyglet, the cross-platform windowing and multimedia
+                          library for Python.</p>
+                          <p>We will build a simple game, which will later be
+                          used as a start for further tutorials.</p>
+                        """,
+        "date": date(2013, 10, 3),
+        "filename": "pyglet_basic.html",
+        "source-repository-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials",
+        "source-download-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials/archive/master.zip",
+    },
+    "Cocos2d - basic tutorial, part 1": {
+        "description": """<p>This tutorial continues where the Pyglet one
+                          dropped off. </p>
+                          <p>We will remake the game we built there in Cocos2,
+                          and in later parts will be adding more features to it
+                          until it looks and feels like an actual game. </p>
+                        """,
+        "date": date(2013, 10, 5),
+        "filename": "cocos2d_basic_1.html",
+        "source-repository-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials",
+        "source-download-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials/archive/master.zip",
+    },
+}

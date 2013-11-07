@@ -11,6 +11,7 @@ config = {"name"        : "Tutorials controller",
                           """,
           "priority"    : 40.0}
 
+tutorials_dir_base = os.path.join("tutorials", "base")
 tutorials_dir = os.path.join("tutorials")
 
 def run():
@@ -26,10 +27,8 @@ def read_tutorials():
     :returns: Tutorials data
     :rtype:   Dictionary
     """
-    with open(os.path.join(tutorials_dir, 'tutorials_data.txt')) as f:
+    with open(os.path.join(tutorials_dir_base, 'tutorials_data.txt')) as f:
         tutorials_data = eval(f.read())
-    for i in tutorials_data.itervalues():
-        i['htmlname'] = i['filename'].rstrip('.html') + '.generated.html'
     return tutorials_data
 
 def write_tutorials(tutorials_data):
@@ -42,7 +41,7 @@ def write_tutorials(tutorials_data):
     for tutorial in tutorials_data.itervalues():
         bf.template.materialize_template(
             "tutorial.mako",
-            os.path.join(tutorials_dir, tutorial['htmlname']),
+            os.path.join(tutorials_dir, tutorial['filename']),
             {"tutorial": tutorial}
         )
 

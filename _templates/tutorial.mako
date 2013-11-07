@@ -1,7 +1,9 @@
 <%
   data = []
-  data.append(('IPython notebook', tutorial['filename'].rstrip('.html') +
-                                   '.ipynb'))
+  data.append(('IPython notebook', 'base/' +
+                                   tutorial['filename'].rstrip('.html') +
+                                   '.ipynb')
+  )
   data.append(('Source repository', tutorial.get('source-repository-link')))
   data.append(('Source download', tutorial.get('source-download-link')))
 
@@ -22,7 +24,7 @@
       [<a data-toggle="collapse" data-parent="#toc" href="#toc-content">show/hide</a>]
     </span>
   </p>
-  <ol id="toc-content" class="in">
+  <ol id="toc-content" class="collapse">
   </ol>
 </div>
 
@@ -40,7 +42,7 @@
   </div>
 </div>
 
-<%include file="${bf.util.site_path_helper('tutorials', tutorial['filename'])}" />
+<%include file="${bf.util.site_path_helper('tutorials', 'base', tutorial['filename'])}" />
 
 <p class="well well-sm post-author">
   Written by: ${tutorial.get('author', '').decode('utf8') or bf.config.site.author}
@@ -53,7 +55,7 @@
 <hr>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-  var disqus_url = "${bf.config.site.url + bf.util.site_path_helper('tutorials', tutorial['htmlname'])[1:]}";
+  var disqus_url = "${bf.config.site.url + bf.util.site_path_helper('tutorials', tutorial['filename'])[1:]}";
 </script>
 <script type="text/javascript" src="http://disqus.com/forums/${bf.config.blog.disqus.name}/embed.js"></script>
 <noscript><a href="http://${bf.config.blog.disqus.name}.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>

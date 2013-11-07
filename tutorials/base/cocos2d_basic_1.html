@@ -1,0 +1,430 @@
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="A-very-basic-Cocos2d-tutorial,-part-1">A very basic Cocos2d tutorial, part 1<a class="anchor-link" href="#A-very-basic-Cocos2d-tutorial,-part-1">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This tutorial continues where the &quot;a very basic pyglet tutorial left off. We will now be moving from the base Pyglet implementation to the Cocos2d one. In this tutorial, we will re-create the same game as in the Pyglet tutorial, only this time, we will use the Cocos2d library built on top of Pyglet.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="What-is-Cocos2d?">What is Cocos2d?<a class="anchor-link" href="#What-is-Cocos2d?">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="http://cocos2d.org/">Cocos2d</a> is a library built on top of Pyglet, and is a framework for building 2D games, demos and other graphical/interactive applications.</p>
+<p>A list of main features taken from their website lists them as:</p>
+<ul>
+<li><strong>Flow control</strong>: Manage the flow control between different scenes in an easy way</li>
+<li><strong>Sprites</strong>: Fast and easy sprites</li>
+<li><strong>Actions</strong>: Just tell sprites what you want them to do. Composable actions like move, rotate, scale and much more</li>
+<li><strong>Effects</strong>: Effects like waves, twirl, lens and much more</li>
+<li><strong>Tiled Maps</strong>: Support for rectangular and hexagonal tiled maps</li>
+<li><strong>Transitions</strong>: Move from scene to scene with style</li>
+<li><strong>Menus</strong>: Built in classes to create menus</li>
+<li><strong>Text Rendering</strong>: Label and HTMLLabel with action support</li>
+<li><strong>Documentation</strong>: Programming Guide + API Reference + Video Tutorials + Lots of simple tests showing how to use it</li>
+<li><strong>Built-in Python Interpreter</strong>: For debugging purposes</li>
+<li><strong>BSD License</strong>: Just use it</li>
+<li><strong>Pyglet Based</strong>: No external dependencies</li>
+<li><strong>OpenGL Based</strong>: Hardware Acceleration</li>
+</ul>
+<p>As you can guess, using Cocos2d instead of just Pyglet can save us a lot of time when trying to make a game. Things like Actions, Flow control, Menus etc. are indispensable in building a game, and this way, we do not have to make them from scratch.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Cocos2d-basics">Cocos2d basics<a class="anchor-link" href="#Cocos2d-basics">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Scenes">Scenes<a class="anchor-link" href="#Scenes">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="http://cocos2d.org/doc/programming_guide/scenes.html">Scenes</a> are more or less independent pieces of the application workflow, that are glued together by the <a href="http://cocos2d.org/doc/programming_guide/director.html">Director</a>. You application can have a large amount of <em>Scenes</em>, but only one can be active at a given time.</p>
+<p>In a normal game, <em>Scenes</em> would usually be something like:</p>
+<ul>
+<li>Intro</li>
+<li>Menu</li>
+<li>Level</li>
+<li>Winning scene</li>
+<li>Losing scene</li>
+</ul>
+<p><em>Scenes</em> can be glued together by the <em>Director</em> in whatever way you wish. Usually, an Intro will lead to the Menu, which will start the Level, which will end in either the Winning or Losing scene, which will lead back to the Menu.</p>
+<p>Of course, as the game grows, so does the number and complexity of <em>Scenes</em>, leading to something like the below image</p>
+<figure>
+    
+<img src="http://cocos2d.org/doc/programming_guide/scenes.png" alt="Scenes hierarchy">
+<figcaption>
+        
+Image taken from the cocos2d <a href="http://cocos2d.org/doc/programming_guide/scenes.html">programming guide</a>
+</figcaption>
+</figure>
+
+<p>Each <em>Scene</em> is usually further divided into <em>Layers</em>.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Layers">Layers<a class="anchor-link" href="#Layers">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="http://cocos2d.org/doc/programming_guide/layers.html">Layers</a> help you organise the <em>Scene</em> in the back to front axis. You can think of <em>Layers</em> similarly to layers in Photoshop or something similar - as transparent sheets on which you can draw the children, which are stacked one on top of another to make a <em>Scene</em>. <em>Layers</em> with higher 'z' coordinate value are on &quot;top&quot; (closer to the camera).</p>
+<p><em>Layers</em> can be something like:</p>
+<ul>
+<li>Background: fixed landscape/background</li>
+<li>Far: decorations</li>
+<li>Middle: gameplay elements</li>
+<li>Near: player, enemies</li>
+<li>HUD: game stats, HP/mana, ...</li>
+</ul>
+<p>Each layer would have a different 'z' coordinate, making sure that the HUD is always shown on top, that the player is shown on top of the gameplay elements etc.</p>
+<figure>
+    
+<img src="http://cocos2d.org/doc/programming_guide/layers.png" alt="Layers making a Scene">
+<figcaption>
+        
+Image taken from the cocos2d <a href="http://cocos2d.org/doc/programming_guide/layers.html">programming guide</a>
+</figcaption>
+</figure>
+
+<p>On <em>Layers</em> you also define event handlers. Events are the propagated to the layers from front to back until a <em>Layer</em> catches and accepts it. Quite nice, as this way you do not have to worry about more then one <em>Layer</em> accepting the same event, as only the top-most one will catch it, which is almost always what we want to do.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Handling-key-presses">Handling key presses<a class="anchor-link" href="#Handling-key-presses">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To handle key presses you must first set <code>is_event_handler = True</code> inside your Layer and then use the <a href="http://www.pyglet.org/doc/api/pyglet.window.Window-class.html">various events</a> defined by Pyglet.</p>
+<p>You can also define your own events.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sample-bare-bones-program">Sample bare bones program<a class="anchor-link" href="#Sample-bare-bones-program">&#182;</a></h2>
+</div>
+
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">cocos</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+    <span class="n">scene</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Scene</span><span class="p">()</span>
+    <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">scene</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As you can expect, this looks exactly the same as it did in the Pyglet bare bones program.</p>
+<p><img src="images/cocos2d_basic_1/example_bare_bones.png" alt="Pyglet bare bones program"></p>
+<p>In cocos2d, we do not need to override the <code>on_draw</code> function, as the screen is automatically cleared each frame and all <em>children</em> of the current <em>Layers</em> are drawn on the screen.</p>
+<p>We only need to initialize the <em>Director</em>, create an empty <em>Scene</em> and run it with the <em>Director</em> - cocos2d takes care of everything else.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Translating-the-game-from-Pyglet-to-Cocos2d">Translating the game from Pyglet to Cocos2d<a class="anchor-link" href="#Translating-the-game-from-Pyglet-to-Cocos2d">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-do-we-need-to-do?">What do we need to do?<a class="anchor-link" href="#What-do-we-need-to-do?">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We need to create a Game <code>cocos.layer.ColorLayer</code> (we use <em>ColorLayer</em> instead of normal <em>Layer</em> so we can choose the background colour) which will be able to handle our key presses.</p>
+<p>Then we create our player, enemies and boss using <code>cocos.sprite.Sprite</code> and <code>cocos.batch.BatchNode</code>. The Cocos2d <em>Sprite</em> is an expanded version of the Pyglet <em>Sprite</em> and offers extra functionality, such as <a href="http://cocos2d.org/doc/programming_guide/actions.html">Actions</a>. When we create all those <em>Sprites</em>, we will add them to the Game layer so they are all drawn.</p>
+<p>We will take care of the player movement using the <code>cocos.actions.Move</code> action, which automatically moves the <em>Sprite</em> using it's <code>velocity</code> parameter.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Full-code">Full code<a class="anchor-link" href="#Full-code">&#182;</a></h2>
+</div>
+
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+
+<span class="kn">from</span> <span class="nn">cocos.actions</span> <span class="kn">import</span> <span class="n">Move</span>
+<span class="kn">from</span> <span class="nn">pyglet.window</span> <span class="kn">import</span> <span class="n">key</span>
+
+<span class="kn">import</span> <span class="nn">cocos</span>
+<span class="kn">import</span> <span class="nn">resources</span>
+
+
+<span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">ColorLayer</span><span class="p">):</span>
+    <span class="n">is_event_handler</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Game</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">25</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mi">150</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">boss</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">boss</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">600</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">BatchNode</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span> <span class="o">=</span> <span class="p">[</span><span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">enemy</span><span class="p">)</span>
+                   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="p">((</span><span class="mi">250</span><span class="p">,</span> <span class="mi">125</span><span class="p">),</span> <span class="p">(</span><span class="mi">550</span><span class="p">,</span> <span class="mi">125</span><span class="p">),</span>
+                     <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">325</span><span class="p">),</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">325</span><span class="p">),</span>
+                     <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">475</span><span class="p">),</span> <span class="p">(</span><span class="mi">650</span><span class="p">,</span> <span class="mi">475</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">enem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">):</span>
+            <span class="n">enem</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">num</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">enem</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Move</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">LEFT</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">UP</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span>
+        <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">DOWN</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span>
+        <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">SPACE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">650</span><span class="p">,</span>
+        <span class="n">caption</span><span class="o">=</span><span class="s">&quot;Catch your husband!&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">game_layer</span> <span class="o">=</span> <span class="n">Game</span><span class="p">()</span>
+    <span class="n">game_scene</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">game_layer</span><span class="p">)</span>
+
+    <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">game_scene</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The &quot;finished&quot; game again looks the same as it looked when built purely in Pyglet.</p>
+<p><img src="images/cocos2d_basic_1/game.png" alt="Catch your husband!"></p>
+<p>Not that much has changed, so you can read through the code alone, or continue up with the in-depth explanation.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Creating-the-Game-layer">Creating the Game layer<a class="anchor-link" href="#Creating-the-Game-layer">&#182;</a></h2>
+</div>
+
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">ColorLayer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Game</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is the base code we need to create our Game layer. Basically we just call the <code>cocos.layer.ColorLayer</code> with our desired color.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Player-sprite">Player sprite<a class="anchor-link" href="#Player-sprite">&#182;</a></h3>
+</div>
+
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">25</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We create a <code>cocos.sprite.Sprite</code> using the player image resource. We also set it's <code>velocity</code> to the base <code>0, 0</code> and set the player's <code>speed</code> to 150px per second. In the end, we add the player to the Game layer, making sure it will be drawn. We add it with the <code>z</code> coordinate of 2, so it will be on top of enemies and the boss.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Enemy-sprites">Enemy sprites<a class="anchor-link" href="#Enemy-sprites">&#182;</a></h3>
+</div>
+
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">batch</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">BatchNode</span><span class="p">()</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">enemies</span> <span class="o">=</span> <span class="p">[</span><span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">enemy</span><span class="p">)</span>
+           <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="p">((</span><span class="mi">250</span><span class="p">,</span> <span class="mi">125</span><span class="p">),</span> <span class="p">(</span><span class="mi">550</span><span class="p">,</span> <span class="mi">125</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">325</span><span class="p">),</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">325</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">475</span><span class="p">),</span> <span class="p">(</span><span class="mi">650</span><span class="p">,</span> <span class="mi">475</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">enem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">):</span>
+    <span class="n">enem</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">num</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">enem</span><span class="p">)</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We created a <code>cocos.batch.BatchNode</code> and added 6 enemies (<em>Sprites</em> using the enemy image resource) inside a list. The code is also shortened a bit and now uses a for loop to change the enemies positions and add them to the batch. The last line adds the whole batch to the Game layer with the <code>z</code> coordinate of 1 (so they will appear under the player).</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Boss-sprite">Boss sprite<a class="anchor-link" href="#Boss-sprite">&#182;</a></h3>
+</div>
+
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">boss</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">boss</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">600</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Same as with player - we create a boss <em>Sprite</em>, set it's position to the desired value and add the boss to the Game layer. We also scaled him a bit as the image we have is too big.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Handling-key-presses">Handling key presses<a class="anchor-link" href="#Handling-key-presses">&#182;</a></h3>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Two parts are important to make sure our Game layer can handle key presses. First, we need to make sure the Game layer's <code>is_event_handler</code> parameter is set to <code>True</code> and second, we need to add the actual game handlers. The code is</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">ColorLayer</span><span class="p">):</span>
+    <span class="n">is_event_handler</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Game</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>to set the <code>is_event_handler</code> and</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">LEFT</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">UP</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span>
+    <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">DOWN</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span>
+    <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">SPACE</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>is the method inside the Game layer that takes care of keyboard key presses. As before, pressing the arrow keys moves the player in that direction and pressing space stops the player movement.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Player-movement">Player movement<a class="anchor-link" href="#Player-movement">&#182;</a></h3>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we already added all the necessary parameters to the player (the <code>velocity</code> parameter), we only need to call the <code>Move</code> action on the player. This way, the player will continue moving by it's velocity every second. This line, set at the end of the Game layer's <code>__init__</code> function, takes care of that</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Move</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-main-function">The main function<a class="anchor-link" href="#The-main-function">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The only thing that remains is to actually run the game. To do this we need to intialize the <em>Director</em>, create a <em>Scene</em> out of our Game layer and run it using the <code>cocos.director.director.run()</code> command. We do all this in the following few lines of code</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">650</span><span class="p">,</span>
+        <span class="n">caption</span><span class="o">=</span><span class="s">&quot;Catch your husband!&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">game_layer</span> <span class="o">=</span> <span class="n">Game</span><span class="p">()</span>
+    <span class="n">game_scene</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">game_layer</span><span class="p">)</span>
+
+    <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">game_scene</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="What-comes-next?">What comes next?<a class="anchor-link" href="#What-comes-next?">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As you could guess from the title, this is only part 1 of my planned Cocos2d tutorials. In the next part we will look at how to create some simple but attractive movement for the enemies and even later we will look at collision detection, menus etc., so stay tuned.</p>
+<p>The next tutorials will also be shorter then this one. As always, feel free to leave your comments below :)</p>
+</div>

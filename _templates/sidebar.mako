@@ -1,8 +1,9 @@
 <%
   from ast import literal_eval
   from datetime import date
+  import os
 
-  with open('tutorials/tutorials_data.txt') as f:
+  with open(os.path.join("tutorials", "base", "tutorials_data.txt")) as f:
     tutorials_data = eval(f.read())
 %>
 
@@ -27,7 +28,7 @@
     <h4><a href="${bf.util.site_path_helper('tutorials')}">Latest Tutorials</a></h4>
     <ul class="sidebar">
       % for tut_name, tut_data in sorted(tutorials_data.iteritems(), key = lambda x: x[1]['date'], reverse=True)[:5]:
-        <li><a href="${bf.util.site_path_helper('tutorials', tut_data['filename'].rstrip('.html') + '.generated.html')}">${tut_name}</a></li>
+        <li><a href="${bf.util.site_path_helper('tutorials', tut_data['filename'])}">${tut_name}</a></li>
       % endfor
     </ul>
   </div>
