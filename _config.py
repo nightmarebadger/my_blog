@@ -80,7 +80,7 @@ blog.disqus.name = "natanblogdev"
 ## the official code doesn't play well with syntax highlighters. Another
 ## workaround for the syntax highlighters problem is in post.mako
 blog.post_excerpts.enabled = False
-blog.post_excerpts.word_length = 200
+blog.post_excerpts.word_length = 100
 
 controllers.tutorials.enabled = True
 

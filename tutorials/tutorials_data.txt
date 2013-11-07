@@ -8,8 +8,8 @@
                         """,
         "date": date(2013, 10, 3),
         "filename": "pyglet_basic.html",
-        # "source-repository-link": "https://github.com/nightmarebadger",
-        # "source-download-link": "https://github.com/nightmarebadger",
+        "source-repository-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials",
+        "source-download-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials/archive/master.zip",
     },
     # "Cocos2d - basic tutorial": {
     #     "description": "A very basic Cocos2d tutorial",
