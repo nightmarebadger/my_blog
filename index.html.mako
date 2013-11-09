@@ -2,13 +2,17 @@
 <article class="page_box">
 <%self:filter chain="markdown">
 
-# Welcome to my blog
+Welcome to my site
+==================
 
-As of the first post, this blog is now in business!
+Hello and welcome to my site. For now, it is a simple blog lacking in posts or
+information, but I hope to see it grow into a hub of my tutorials, tips and
+tricks.
 
-It is more or less empty for now, but hopefully it will start filling up sooner
-rather then later (adding an "About me" page, more tutorials etc.). Feel free
-to browse, look around and comment!
+I will try to post various pieces that I find useful or interesting while
+slowly building up a base of full-fledged Python tutorials.
+
+So feel free to look around, read a tutorial, leave a comment, ...
 
 </%self:filter>
 </article>
