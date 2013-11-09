@@ -9,6 +9,13 @@
 
 <div class="sidebar">
   <div class="well">
+    <h4>Quick links</h4>
+    <ul class="sidebar">
+      <li><a href="${bf.util.site_path_helper('about.html')}">About me</a></li>
+    </ul>
+    <iframe src="http://githubbadge.appspot.com/nightmarebadger?a=0" style="border: 0;height: 142px;width: 200px;overflow: hidden;" frameBorder="0"></iframe>
+  </div>
+  <div class="well">
     <h4><a href="${bf.util.site_path_helper(bf.config.blog.path)}">Latest posts</a></h4>
     <ul class="sidebar">
       % for post in bf.config.blog.iter_posts_published(5):

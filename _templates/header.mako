@@ -12,6 +12,8 @@
       <%
         def nav_class():
           render_path = bf.template_context.render_path.strip('/')
+          if render_path.startswith('./about.html'):
+            return 'about'
           if render_path.startswith('blog/archive'):
             return 'archive'
           if render_path.startswith('blog/category'):
@@ -41,6 +43,9 @@
         </li>
         <li class="${path_name == 'archive' and 'active' or ''}">
           <a href="${bf.util.site_path_helper(bf.config.blog.path, 'archive')}">Archives</a>
+        </li>
+        <li class="${path_name == 'about' and 'active' or ''}">
+          <a href="${bf.util.site_path_helper('about.html')}">About me</a>
         </li>
       </ul>
     </div>

@@ -1,13 +1,15 @@
 ul.sidebar {
     padding-left: 15px;
 }
+.sidebar h4 {
+    margin-top: 0;
+}
 p.post-author {
     display: inline-block;
     padding: 5px;
     margin: 0px;
     margin-top: 10px;
 }
-
 
 #toc ol {
     counter-reset: item;
@@ -36,11 +38,11 @@ article.tutorial_box p.toctitle span {
 }
 article.tutorial_box p.source-links {
     margin-top: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 article.tutorials_index div.well h3 {
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 article.tutorial_box img {
@@ -58,29 +60,25 @@ article.tutorial_box figure img {
 }
 
 
-article.tutorial_box h1 {
+h1 {
     margin-top: 35px;
     margin-bottom: 20px;
-    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
     padding-top: 5px;
 }
-article.tutorial_box h2,
-article.tutorial_box h3 {
+h2, h3 {
     margin-top: 30px;
     margin-bottom: 15px;
 }
-article.tutorial_box h4,
-article.tutorial_box h5,
-article.tutorial_box h6 {
+h4, h5, h6 {
     margin-top: 20px;
 }
 
-article.tutorial_box p,
-article.tutorial_box div.input_area {
+p, div.input_area {
     margin-bottom: 15px;
 }
 
-article.tutorial_box blockquote p {
-    margin: 0px;
+blockquote p {
+    margin: 0;
     font-size: 16px;
 }
