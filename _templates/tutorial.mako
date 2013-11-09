@@ -44,6 +44,42 @@
 
 <%include file="${bf.util.site_path_helper('tutorials', 'base', tutorial['filename'])}" />
 
+% if chain:
+  <h1 id="Related-tutorials">Related tutorials</h1>
+  <p>
+    This tutorial is part of a chain of tutorials:
+    <ul>
+    % for chain_name, chain_data in chain:
+      <li>
+        <a href="${chain_data['filename']}">${chain_name}</a>
+        % if name == chain_name:
+          - current
+        % endif
+      </li>
+    % endfor
+    </ul>
+  </p>
+
+  <br>
+  % if previous_tutorial or next_tutorial:
+    <hr>
+    % if previous_tutorial:
+      <span class="pull-left">Previous tutorial:
+        <a href="${previous_tutorial[1]['filename']}">${previous_tutorial[0]}</a>
+      </span>
+    % endif
+
+    % if next_tutorial:
+      <span class="pull-right">Next tutorial:
+        <a href="${next_tutorial[1]['filename']}">${next_tutorial[0]}</a>
+      </span>
+    % endif
+    <br>
+    <hr>
+  % endif
+  <br>
+% endif
+
 <p class="well well-sm post-author">
   Written by: ${tutorial.get('author', '').decode('utf8') or bf.config.site.author}
 </p>
@@ -51,6 +87,7 @@
 <p class="well well-sm post-author">
   Written on: ${tutorial['date'].strftime("%d %b %Y")}
 </p>
+
 % if bf.config.blog.disqus.enabled:
 <hr>
 <div id="disqus_thread"></div>
