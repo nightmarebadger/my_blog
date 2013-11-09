@@ -18,4 +18,6 @@
   <link rel="stylesheet" href="${bf.util.site_path_helper('css/custom.css')}" />
   <link rel="stylesheet" href="${bf.util.site_path_helper('css/custom-notebook.css')}" />
 
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
   <%include file="theme.mako"/>

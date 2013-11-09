@@ -82,3 +82,7 @@ blockquote p {
     margin: 0;
     font-size: 16px;
 }
+
+nav .fa {
+    padding-right: 5px;
+}

@@ -30,22 +30,22 @@
         %>
       <ul class="nav navbar-nav">
         <li class="${path_name == 'home' and 'active' or ''}">
-          <a href="${bf.util.site_path_helper()}">Home</a>
+          <a href="${bf.util.site_path_helper()}"><i class="fa fa-home"></i> Home</a>
         </li>
         <li class="${path_name == 'blog' and 'active' or ''}">
-          <a href="${bf.util.site_path_helper(bf.config.blog.path)}">Blog</a>
+          <a href="${bf.util.site_path_helper(bf.config.blog.path)}"><i class="fa fa-file-o"></i> Blog</a>
         </li>
         <li class="${path_name == 'categories' and 'active' or ''}">
-          <a href="${bf.util.site_path_helper(bf.config.blog.path, 'category')}">Categories</a>
+          <a href="${bf.util.site_path_helper(bf.config.blog.path, 'category')}"><i class="fa fa-files-o"></i> Categories</a>
         </li>
         <li class="${path_name == 'tutorials' and 'active' or ''}">
-          <a href="${bf.util.site_path_helper('tutorials')}">Tutorials</a>
+          <a href="${bf.util.site_path_helper('tutorials')}"><i class="fa fa-code"></i> Tutorials</a>
         </li>
         <li class="${path_name == 'archive' and 'active' or ''}">
-          <a href="${bf.util.site_path_helper(bf.config.blog.path, 'archive')}">Archives</a>
+          <a href="${bf.util.site_path_helper(bf.config.blog.path, 'archive')}"><i class="fa fa-folder-open"></i> Archives</a>
         </li>
         <li class="${path_name == 'about' and 'active' or ''}">
-          <a href="${bf.util.site_path_helper('about.html')}">About me</a>
+          <a href="${bf.util.site_path_helper('about.html')}"><i class="fa fa-question"></i> About me</a>
         </li>
       </ul>
     </div>
