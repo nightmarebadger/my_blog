@@ -51,7 +51,7 @@ blog.template_path = "_templates/blog"
 
 ## blog_description -- A short one line description of the blog
 # used in the RSS/Atom feeds.
-blog.description = "One of the many ..."
+blog.description = "Blog with tutorials about Python, web developent and various other interesting topics from the world of computers."
 
 ## blog_timezone -- the timezone that you normally write your blog posts from
 blog.timezone = "Europe/Ljubljana"
