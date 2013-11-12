@@ -44,15 +44,15 @@
 
 <%include file="${bf.util.site_path_helper('tutorials', 'base', tutorial['filename'])}" />
 
-% if chain:
+% if tutorial_chain:
   <h1 id="Related-tutorials">Related tutorials</h1>
   <p>
     This tutorial is part of a chain of tutorials:
     <ul>
-    % for chain_name, chain_data in chain:
+    % for chain_name, chain_data in tutorial_chain:
       <li>
         <a href="${chain_data['filename']}">${chain_name}</a>
-        % if name == chain_name:
+        % if tutorial_name == chain_name:
           - current
         % endif
       </li>
@@ -61,17 +61,17 @@
   </p>
 
   <br>
-  % if previous_tutorial or next_tutorial:
+  % if tutorial_previous or tutorial_next:
     <hr>
-    % if previous_tutorial:
+    % if tutorial_previous:
       <span class="pull-left">Previous tutorial:
-        <a href="${previous_tutorial[1]['filename']}">${previous_tutorial[0]}</a>
+        <a href="${tutorial_previous[1]['filename']}">${tutorial_previous[0]}</a>
       </span>
     % endif
 
-    % if next_tutorial:
+    % if tutorial_next:
       <span class="pull-right">Next tutorial:
-        <a href="${next_tutorial[1]['filename']}">${next_tutorial[0]}</a>
+        <a href="${tutorial_next[1]['filename']}">${tutorial_next[0]}</a>
       </span>
     % endif
     <br>

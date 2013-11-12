@@ -71,10 +71,10 @@ def write_tutorials(tutorials_data, tutorials_chains):
             os.path.join(tutorials_dir, tutorial['filename']),
             {
                 "tutorial": tutorial,
-                "chain": chain,
-                "name": name,
-                "previous_tutorial": previous_tutorial,
-                "next_tutorial": next_tutorial,
+                "tutorial_chain": chain,
+                "tutorial_name": name,
+                "tutorial_previous": previous_tutorial,
+                "tutorial_next": next_tutorial,
             }
         )
 
