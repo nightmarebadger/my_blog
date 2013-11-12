@@ -53,10 +53,10 @@ quickly search and change between them. It is also not only limited to simple
 file searching and opening, but you can also:
 
 * Start typing to search between the files
-* Type *@* to search between sections of the file (headers, function
+* Type "@"" to search between sections of the file (headers, function
   definitions etc.)
-* Type *#* to search within the file
-* Type *:* to go to a line number
+* Type "#"" to search within the file
+* Type ":" to go to a line number
 
 And now the real catch - these options can be combined! So I can fire up the
 Goto anything using the command *Ctrl+P*, write "edit" to find the
