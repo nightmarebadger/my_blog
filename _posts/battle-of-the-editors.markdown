@@ -21,6 +21,12 @@ In the end, I have found what I have been looking for in Sublime Text 2, which,
 at least for now, is close enough to my "perfect" editor that I do not feel the
 need to test out new editors.
 
+This editor is light, fast and has a nice & clean design. The out of the box
+functionality is good, and can very easily be extended using packages from the
+Package control. It's also Python based, so writing or changing/adding to
+plugins is a breeze. Additionally, it offers some really useful features I
+haven't seen in other editors I have used.
+
 ## Editors I have used in the past
 
 The editors I've gone through until now are:
