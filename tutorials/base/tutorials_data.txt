@@ -6,7 +6,7 @@
                           <p>We will build a simple game, which will later be
                           used as a start for further tutorials.</p>
                         """,
-        "date": date(2013, 10, 3),
+        "date": date(2013, 11, 3),
         "filename": "pyglet_basic.html",
         "source-repository-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials",
         "source-download-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials/archive/master.zip",
@@ -19,7 +19,7 @@
                           and in later parts will be adding more features to it
                           until it looks and feels like an actual game. </p>
                         """,
-        "date": date(2013, 10, 5),
+        "date": date(2013, 11, 5),
         "filename": "cocos2d_basic_1.html",
         "source-repository-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials",
         "source-download-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials/archive/master.zip",

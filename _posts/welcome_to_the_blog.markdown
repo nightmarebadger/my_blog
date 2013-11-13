@@ -1,6 +1,6 @@
 ---
 categories: welcome
-date: 2013/10/07 00:33:00
+date: 2013/11/07 00:33:00
 tags: new, blog
 title: Welcome to the blog!
 ---

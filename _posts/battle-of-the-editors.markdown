@@ -1,6 +1,6 @@
 ---
 categories: sublime text, programming tools, editors
-date: 2013/10/11 02:30:00
+date: 2013/11/11 02:30:00
 tags: sublime text 2
 title: Battle of the editors - Sublime Text 2
 ---
