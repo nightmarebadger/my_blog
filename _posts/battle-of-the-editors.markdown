@@ -119,7 +119,8 @@ somewhere in the paragraph, just press *Alt+Q* and it's done.
 
 To make sure everything works fine even in markdown lists, code comments etc. I
 recommend installing the [Sublime Wrap
-Plus](https://github.com/ehuss/Sublime-Wrap-Plus) package.
+Plus](https://github.com/ehuss/Sublime-Wrap-Plus) package (read below how to
+install packages easily).
 
 ### Spell check
 
@@ -134,6 +135,21 @@ The selection will move up or down according to your commands, "pushing" the
 other lines above or below it (depending on which way you're going of course).
 A simple and fast way of moving some code around, plus it looks like magic to
 anyone looking over your shoulder :).
+
+### Sort lines and removing duplicate lines
+
+Sublime Text 2 comes with an integrated command to sort lines (*F9* or open up
+the command palette and find it there). Those pesky imports at the top of each
+file that you want to sort alphabetically? Well, now you can do it, quick and
+easy.
+
+Another great feature can be found under *Edit > Permute Lines > Unique*, which
+gets rid of the duplicates.
+
+Using a combination of those commands together with the
+[TableCleaner](https://github.com/amisarca/Sublime-Text-2-Table-Cleaner) you
+can make data gotten from logs, debugs etc. presentable and readable very
+quickly and easily.
 
 ### [Package control](https://sublime.wbond.net/)
 
