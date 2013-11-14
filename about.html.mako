@@ -22,7 +22,7 @@ of other hobbies such as improvisational theatre, a drama group and others. As
 I got to know Python more, I've also come to realise that it would be a very
 good language for teaching programming to beginners and as such, I've joined
 Gašper in leading the programming club after I finished with high school and
-went to study at mathematics the [Faculty of Mathematics and
+went to study mathematics at the [Faculty of Mathematics and
 Physics](http://www.fmf.uni-lj.si/en/).
 
 With Gašper leaving for a job abroad I've since then taken over the programming
@@ -38,7 +38,7 @@ My interests
 
 While being interested in various topics and writing small programs and
 applications for virtually everything that I could think of, lately I've been
-learning about and working on web development and creating GUI programs
+mostly learning about and working on web development, creating GUI programs
 (Tkinter), 2D and 3D games or similar graphically expensive applications
 (PyGame, Pyglet, Cocos2d, Panda3d). It is still my dream to someday release a
 fun, well thought out game that wouldn't be just a generic copy of everything
