@@ -8,7 +8,6 @@ draft: True
 
 First a list of my installed addons, with every addon being explained in more detail later.
 
-Note: not yet a complete list
 
 ## Addons I use
 
@@ -42,6 +41,18 @@ Note: not yet a complete list
 
                 Simplifies writing DocBlock comments in JS, CoffeScript,
                 Actionscript, PHP, C, ...
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="https://github.com/revolunet/sublimetext-markdown-preview">
+                    Mako
+                </a>
+            </td>
+            <td>
+
+                Added support for Mako templates highlighting.
 
             </td>
         </tr>
@@ -115,7 +126,19 @@ Note: not yet a complete list
             </td>
             <td>
 
-                Adds Rope (refactoring library) support.
+                Adds Rope (re-factoring library) support.
+
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <a href="https://github.com/JulianEberius/SublimeRope">
+                    Sublime Wrap Plus
+                </a>
+            </td>
+            <td>
+
+                Extra support for hard line wrap.
 
             </td>
         </tr>
@@ -146,3 +169,74 @@ Note: not yet a complete list
             </td>
         </tr>
     </tbody>
+</table>
+
+### Auto Encoding for Python
+
+Since I speak a language that often uses utf-8 characters, I'm getting tired of
+writing `# -*- coding: utf-8 -*-` or something similar on the top of each file
+that uses one of those characters. This addon does that for me, only generating
+the encoding declaration when it's needed and deleting it when it's not needed
+any more.
+
+### DocBlockr
+
+Really simplifies the writing of block comments for functions in JS etc. I've
+also started working on Python support, but it's not that far along yet. You
+can find what I've added on my
+[GitHub](https://github.com/nightmarebadger/sublime-jsdocs/tree/add_python_support).
+
+### Mako
+
+Adds the Mako template syntax highlighter to Sublime Text 2. Very useful for
+everyone working with Mako templates.
+
+### Markdown Preview
+
+An addon that allows you quickly build the Markdown in the currently open file
+and preview it in the browser. Very useful, especially when you are just
+starting to learn Markdown.
+
+Once you generate the file, it's also automatically updated on each save,
+making it a very fast way to check how your changes changed the document.
+
+Also supports Git flavoured Markdown, which uses the actual GitHub API, and as
+such, a Python with SSL support is required.
+
+### Pane Navigation
+
+Changing between opened files in Sublime Text 2 using *Ctrl+Tab* or
+*Ctrl+Shift+Tab* can be an ... interesting experience. It definitely does not
+work as you would expect at the beginning (it does not move right or left
+through the opened tabs, but rather works through a last-changed list or
+something like that).
+
+If you do not like how it's handled in the vanilla install, grab this package,
+which changes the navigation to something you're probably more used to
+(*Ctrl+Tab* moves right, *Ctrl+Shift+Tab* moves left).
+
+### SideBarEnhancements
+
+Adds many new options like deleting, moving, renaming, copying etc. to the
+Sidebar. Frankly I've used this since I started using ST2 so I'm not completely
+sure which options are integrated and which options are added by the package,
+but you surely have nothing to lose by installing this.
+
+### SublimeCodeIntel
+
+Adds code intelligence, ported from [Open Komodo
+Editor](http://www.openkomodo.com/). Adds stuff like function call tool tips,
+auto completion from imports, jump to symbol definition etc.
+
+### SublimeLinter
+
+Adds support for "lint" programs for many languages. This is an invaluable tool
+that constantly checks your code to see if it's up to the standards, making it
+easy to produce better code faster. Do not even think if you need this or not -
+just install it :).
+
+### SublimeRope
+
+Adds support for the Rope (re-factoring library), making it even easier to
+re-factor and restructure your code, automatically manage your imports, get
+documentation, features an extended auto completion etc.
