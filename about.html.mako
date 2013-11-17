@@ -7,6 +7,9 @@
 About me
 ========
 
+My name is Natan Žabkar and I am a student of mathematics at the [Faculty of
+Mathematics and Physics].
+
 Even though I have been interested in computers and technology from a very
 young age, I haven't really started learning anything about it until I started
 going to high school at the age of 14. From that point on, I've slowly started
@@ -23,7 +26,7 @@ I got to know Python more, I've also come to realise that it would be a very
 good language for teaching programming to beginners and as such, I've joined
 Gašper in leading the programming club after I finished with high school and
 went to study mathematics at the [Faculty of Mathematics and
-Physics](http://www.fmf.uni-lj.si/en/).
+Physics].
 
 With Gašper leaving for a job abroad I've since then taken over the programming
 course. For the last three years I have also been teaching as a demonstrator at
@@ -59,6 +62,9 @@ always leave me a comment, email or message on github):
   (or any) posts from me, I usually just use it for news and getting posts from
   people I follow
 * [Github](https://github.com/nightmarebadger) - @nightmarebadger
+
+
+[Faculty of Mathematics and Physics]: http://www.fmf.uni-lj.si/en/
 
 </%self:filter>
 </article>
