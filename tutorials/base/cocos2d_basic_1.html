@@ -4,7 +4,7 @@
 </div>
 
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This tutorial continues where the &quot;a very basic pyglet tutorial left off. We will now be moving from the base Pyglet implementation to the Cocos2d one. In this tutorial, we will re-create the same game as in the Pyglet tutorial, only this time, we will use the Cocos2d library built on top of Pyglet.</p>
+<p>This tutorial continues where the &quot;a very basic pyglet tutorial&quot; left off. We will be moving from the base Pyglet implementation to the Cocos2d one. In this tutorial, we will re-create the same game as in the Pyglet tutorial, only this time, we will use the Cocos2d library built on top of Pyglet.</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="What-is-Cocos2d?">What is Cocos2d?<a class="anchor-link" href="#What-is-Cocos2d?">&#182;</a></h1>
@@ -135,6 +135,7 @@ In&nbsp;[]:
 <p>We need to create a Game <code>cocos.layer.ColorLayer</code> (we use <em>ColorLayer</em> instead of normal <em>Layer</em> so we can choose the background colour) which will be able to handle our key presses.</p>
 <p>Then we create our player, enemies and boss using <code>cocos.sprite.Sprite</code> and <code>cocos.batch.BatchNode</code>. The Cocos2d <em>Sprite</em> is an expanded version of the Pyglet <em>Sprite</em> and offers extra functionality, such as <a href="http://cocos2d.org/doc/programming_guide/actions.html">Actions</a>. When we create all those <em>Sprites</em>, we will add them to the Game layer so they are all drawn.</p>
 <p>We will take care of the player movement using the <code>cocos.actions.Move</code> action, which automatically moves the <em>Sprite</em> using it's <code>velocity</code> parameter.</p>
+<p>The <em>resources.py</em> file does not need to be changed.</p>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Full-code">Full code<a class="anchor-link" href="#Full-code">&#182;</a></h2>
