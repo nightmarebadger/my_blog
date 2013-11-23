@@ -3,9 +3,10 @@
         "description": """<p>In this tutorial, we will look over the basics of
                           Pyglet, the cross-platform windowing and multimedia
                           library for Python.</p>
+
                           <p>We will build a simple game, which will later be
                           used as a start for further tutorials.</p>
-                        """,
+                       """,
         "date": date(2013, 11, 3),
         "filename": "pyglet_basic.html",
         "source-repository-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials",
@@ -14,13 +15,25 @@
     },
     "Cocos2d - basic tutorial, part 1": {
         "description": """<p>This tutorial continues where the Pyglet one
-                          dropped off. </p>
+                          dropped off.</p>
+
                           <p>We will remake the game we built there in Cocos2,
                           and in later parts will be adding more features to it
-                          until it looks and feels like an actual game. </p>
-                        """,
+                          until it looks and feels like an actual game.</p>
+                       """,
         "date": date(2013, 11, 5),
         "filename": "cocos2d_basic_1.html",
+        "source-repository-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials",
+        "source-download-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials/archive/master.zip",
+        "keywords": 'cocos2d, basic',
+    },
+    "Cocos2d - basic tutorial, part 2": {
+        "description": """<p>Continuing from part 1, we will look at Cocos2d
+                          Actions and use them to add dynamic movement to the
+                          enemy henchmen.</p>
+                       """,
+        "date": date(2013, 11, 23),
+        "filename": "cocos2d_basic_2.html",
         "source-repository-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials",
         "source-download-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials/archive/master.zip",
         "keywords": 'cocos2d, basic',
