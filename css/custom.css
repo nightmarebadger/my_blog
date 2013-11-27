@@ -86,3 +86,24 @@ blockquote p {
 nav .fa {
     padding-right: 5px;
 }
+
+/*Google custom search stuff*/
+.gsc-input-box {
+    height: auto !important;
+}
+td.gsc-input {
+    padding-right: 0px !important;
+}
+td.gsc-search-button,
+td.gsc-clear-button {
+/*.gsc-input-box td.gsib_b {*/
+    display: none;
+}
+
+.gsc-input-box td.gsib_b div {
+    height: 13px;
+}
+
+.gsc-input-box td.gsib_b a {
+    padding-top: 0px;
+}
