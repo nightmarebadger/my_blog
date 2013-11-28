@@ -20,7 +20,7 @@
       s.parentNode.insertBefore(gcse, s);
     })();
   </script>
-  <gcse:searchbox-only></gcse:searchbox-only>
+  <gcse:searchbox-only><input type="text" class="fake-google-search"></gcse:searchbox-only>
   <div class="well">
     <h4><a href="${bf.util.site_path_helper(bf.config.blog.path)}">Latest posts</a></h4>
     <ul class="sidebar">
