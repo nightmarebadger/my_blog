@@ -15,7 +15,7 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
-<gcse:searchbox-only></gcse:searchbox-only>
+<gcse:searchbox-only><input type="text" class="fake-google-search"></gcse:searchbox-only>
 
 <script>
   (function() {
