@@ -42,7 +42,9 @@
   <link rel="stylesheet" href="${bf.util.site_path_helper('css/bootstrap.min.css')}" />
   <link rel="stylesheet" href="${bf.util.site_path_helper('css/bootstrap-theme.min.css')}" />
   <link rel="stylesheet" href="${bf.util.site_path_helper('css/custom.css')}" />
-  <link rel="stylesheet" href="${bf.util.site_path_helper('css/custom-notebook.css')}" />
+  % if bf.template_context.render_path.strip('/').startswith('tutorials'):
+    <link rel="stylesheet" href="${bf.util.site_path_helper('css/custom-notebook.css')}" />
+  % endif
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
