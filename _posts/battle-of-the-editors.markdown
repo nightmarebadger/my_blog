@@ -153,11 +153,11 @@ quickly and easily.
 
 ### [Package control](https://sublime.wbond.net/)
 
-Leaving the best for last, this is the hearth and soul of Sublime Text 2 for
+Leaving the best for last, this is the heart and soul of Sublime Text 2 for
 me. It is a great and easy way to install and manage your packages.
 
 Basically it allows you to download packages through the Command palette
-(*Ctrl+Shift+P) with the "Package control: Install Package" command, which
+(*Ctrl+Shift+P*) with the "Package control: Install Package" command, which
 looks on the web to find the list of all packages with their descriptions that
 can be searched as all other commands in the Command palette can.
 
