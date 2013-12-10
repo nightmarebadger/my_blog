@@ -1,12 +1,12 @@
 ---
 categories: sublime text, programming tools, editors
-date: 2013/11/11 02:30:00
+date: 2013/12/08 22:00:00
 tags: sublime text 2
 title: My Sublime Text 2 settings
-draft: True
 ---
 
-First a list of my installed addons, with every addon being explained in more detail later.
+In this post I will go through the core addons I use (I might use some more
+here and there but these are the ones I find the most useful).
 
 
 ## Addons I use
@@ -240,3 +240,50 @@ just install it :).
 Adds support for the Rope (re-factoring library), making it even easier to
 re-factor and restructure your code, automatically manage your imports, get
 documentation, features an extended auto completion etc.
+
+### SublimeWrapPlus
+
+Better hard line wrapping (*Alt+Q*), now works correctly in many instances
+where it didn't work as expected before (for instance in Markdown lists).
+
+### TableCleaner
+
+I use it to align tables/data that I write. Very useful when trying to organise
+some data or when writing LaTeX or Markdown tables.
+
+### Tag
+
+Extra support for writing HTML tags, makes writing HTML much easier and faster.
+It helps with closing tags, adds autocompletion for HTML tags using *Tab* etc.
+
+## Personal settings
+
+I will not list my full settings (which include dictionaries etc.) or settings
+for individual addons, but rather just the base settings I think might be
+useful to everyone.
+
+    {
+        "ensure_newline_at_eof_on_save": true,
+        "fallback_encoding": "UTF-8",
+        "hot_exit": false,
+        "remember_open_files": false,
+        "rulers":
+        [
+            79
+        ],
+        "tab_size": 4,
+        "translate_tabs_to_spaces": true,
+        "trim_trailing_white_space_on_save": true
+    }
+
+The settings are more or less self explanatory - I make sure to always use
+spaces instead of tabs (one tab equals to 4 spaces), ensure a newline at the
+end of file and trim trailing white space on save.
+
+I also disabled "hot exit", which closes without prompting to save and
+preserves your changes until you open Sublime Text 2 again. This, in addition
+to disabling the "remember_open_files" option makes sure I always start with a
+clean editor (unless it crashed, where everything is still preserved and all
+windows are reopened).
+
+I also set a ruler to 79 characters for keeping with Python coding standards.
