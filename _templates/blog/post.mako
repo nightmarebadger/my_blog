@@ -22,6 +22,16 @@
         % endif
       </small></p>
     </header>
+    <div id="toc" class="well well-sm">
+      <p class="toctitle centered">
+        Contents
+        <span>
+          [<a data-toggle="collapse" data-parent="#toc" href="#toc-content">show/hide</a>]
+        </span>
+      </p>
+      <ol id="toc-content" class="collapse">
+      </ol>
+    </div>
     <div class="post_prose">
       ${self.post_prose(post)}
     </div>
@@ -37,6 +47,28 @@
     %endif
   </div>
 </article>
+
+<script>
+  var toc = $("#toc ol");
+  var tmp = "";
+  var lastLevel = 2;
+  $("h2, h3, h4").each(function(i) {
+      var current = $(this);
+      var currentLevel = parseInt(current.prop('tagName')[1]);
+      while (currentLevel > lastLevel) {
+          tmp += "<ol>";
+          lastLevel += 1;
+      }
+      while (currentLevel < lastLevel) {
+          tmp += "</ol>";
+          lastLevel -= 1;
+          tmp += "</li>";
+      }
+      tmp += "<li><a id='#" + current.prop('id') + "-toc' href='#" + current.prop('id') + "'>" + current.html() + "</a>";
+  });
+
+  toc.append(tmp);
+</script>
 
 <%def name="post_prose(post)">
   ${post.content}

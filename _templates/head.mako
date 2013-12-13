@@ -48,4 +48,6 @@
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
+  <script src="${bf.util.site_path_helper('js/jquery-1.10.2.min.js')}"></script>
+
   <%include file="theme.mako"/>

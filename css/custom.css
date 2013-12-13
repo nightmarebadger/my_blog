@@ -22,17 +22,17 @@ p.post-author {
     display: block;
 }
 #toc li:before {
-    content: counters(item, ".") " ";
+    content: counters(item, ".") ". ";
     counter-increment: item;
 }
 .centered {
     text-align: center;
 }
-article.tutorial_box p.toctitle {
+p.toctitle {
     font-weight: bold;
     margin-bottom: 0;
 }
-article.tutorial_box p.toctitle span {
+p.toctitle span {
     font-weight: normal;
     font-size: 80%;
 }
