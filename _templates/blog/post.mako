@@ -22,16 +22,9 @@
         % endif
       </small></p>
     </header>
-    <div id="toc" class="well well-sm">
-      <p class="toctitle centered">
-        Contents
-        <span>
-          [<a data-toggle="collapse" data-parent="#toc" href="#toc-content">show/hide</a>]
-        </span>
-      </p>
-      <ol id="toc-content" class="collapse">
-      </ol>
-    </div>
+
+    ${self.post_toc()}
+
     <div class="post_prose">
       ${self.post_prose(post)}
     </div>
@@ -57,4 +50,18 @@
 </%def>
 <%def name="post_excerpt()">
 
+</%def>
+<%def name="post_toc()">
+  ${'''
+    <div id="toc" class="well well-sm">
+      <p class="toctitle centered">
+        Contents
+        <span>
+          [<a data-toggle="collapse" data-parent="#toc" href="#toc-content">show/hide</a>]
+        </span>
+      </p>
+      <ol id="toc-content" class="collapse">
+      </ol>
+    </div>
+  '''}
 </%def>

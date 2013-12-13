@@ -10,3 +10,6 @@
     This is an excerpt. To see the full post, please click on the title.
   </p>'''}
 </%def>
+<%def name="post_toc()">
+
+</%def>
