@@ -12,8 +12,38 @@
   })();
 </script>
 
+<script src="${bf.util.site_path_helper('js/jquery-1.10.2.min.js')}"></script>
 <script src="${bf.util.site_path_helper('js/bootstrap.min.js')}"></script>
 <script src="${bf.util.site_path_helper('js/plugins.js')}"></script>
+
+<script>
+  var toc = $("#toc ol");
+  if (toc.length){
+      if (typeof toc_selector === 'undefined'){
+          var toc_selector = "h1, h2, h3";
+      }
+      var tmp = "",
+          lastLevel = parseInt(toc_selector[1]);
+      $("article").find(toc_selector).each(function(i) {
+          var current = $(this),
+              currentLevel = parseInt(current.prop('tagName')[1]);
+          while (currentLevel > lastLevel) {
+              tmp += "<ol>";
+              lastLevel += 1;
+          }
+          while (currentLevel < lastLevel) {
+              tmp += "</ol>";
+              lastLevel -= 1;
+              tmp += "</li>";
+          }
+          tmp += "<li><a id='#" + current.prop('id') + "-toc' href='#" + current.prop('id') + "'>" + current.html() + "</a>";
+
+      });
+
+      toc.append(tmp);
+  }
+
+</script>
 
 <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 <script type="text/javascript">

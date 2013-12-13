@@ -98,25 +98,3 @@
 <noscript><a href="http://${bf.config.blog.disqus.name}.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 % endif
 </article>
-
-<script>
-  var toc = $("#toc ol");
-  var tmp = "";
-  var lastLevel = 1;
-  $("h1, h2, h3").each(function(i) {
-      var current = $(this);
-      var currentLevel = parseInt(current.prop('tagName')[1]);
-      while (currentLevel > lastLevel) {
-          tmp += "<ol>";
-          lastLevel += 1;
-      }
-      while (currentLevel < lastLevel) {
-          tmp += "</ol>";
-          lastLevel -= 1;
-          tmp += "</li>";
-      }
-      tmp += "<li><a id='#" + current.prop('id') + "-toc' href='#" + current.prop('id') + "'>" + current.html() + "</a>";
-  });
-
-  toc.append(tmp);
-</script>
