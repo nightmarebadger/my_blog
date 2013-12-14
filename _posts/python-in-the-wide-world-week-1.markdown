@@ -1,6 +1,6 @@
 ---
 categories: python
-date: 2013/12/14 20:15:00
+date: 2013/12/16 20:15:00
 title: Python in the wide world week - day 1, XBMC
 draft: True
 ---
