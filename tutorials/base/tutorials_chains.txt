@@ -2,5 +2,6 @@
     ["Pyglet - basic tutorial",
      "Cocos2d - basic tutorial, part 1",
      "Cocos2d - basic tutorial, part 2",
+     "Cocos2d - basic tutorial, part 3",
     ]
 ]

@@ -1,0 +1,270 @@
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="A-very-basic-Cocos2d-tutorial,-part-3">A very basic Cocos2d tutorial, part 3<a class="anchor-link" href="#A-very-basic-Cocos2d-tutorial,-part-3">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we have the movement done, we need to set up <a href="http://cocos2d.org/doc/programming_guide/collision.html">collision detection</a> so we can actually win or lose the game.</p>
+<p>For this, we will use a simple brute force algorithm from Cocos2d. There are better options inside Cocos2d - and we can write even better ones ourselves - but we will keep this as simple as possible.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Collision-manager">Collision manager<a class="anchor-link" href="#Collision-manager">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First, we need to create a <a href="http://cocos2d.org/doc/api/cocos.collision_model.CollisionManager-class.html">collision manager</a>. Once we create a collision manager and add some objects to it, we can &quot;ask&quot; it questions like:</p>
+<ul>
+<li>Which known objects collide with <em>selected object</em></li>
+<li>Which known objects are nearer then 'X' pixels to <em>selected object</em></li>
+<li>...</li>
+</ul>
+<p>As we will use a simple brute force algorithm, we will use:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">cocos.collision_model</span> <span class="kn">as</span> <span class="nn">cm</span>
+
+<span class="n">collision_manager</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">CollisionManagerBruteForce</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Adding-sprites-to-the-collision-manager">Adding sprites to the collision manager<a class="anchor-link" href="#Adding-sprites-to-the-collision-manager">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we want to add a sprite to the collision manager, we need to make sure that the sprite instance has a <code>.cshape</code> property, which is either <code>cocos.collision_model.AARectShape</code> (rectangle shape) or <code>cocos.collision_model.AACircleShape</code> (circle shape). If everything is ready, we can simply add it to the collision manager via it's <code>.add()</code> method.</p>
+<p>Keep in mind that we cannot mix the two types of shapes inside a single collision manager, but we can have many collision managers (one for the player and walls, one for the player and enemies etc.).</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">cocos.collision_model</span> <span class="kn">as</span> <span class="nn">cm</span>
+
+<span class="n">collision_manager</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">CollisionManagerBruteForce</span><span class="p">()</span>
+
+<span class="n">sprite</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">image1</span><span class="p">)</span>
+<span class="n">sprite</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span>
+<span class="n">sprite</span><span class="o">.</span><span class="n">cshape</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">AARectShape</span><span class="p">(</span>
+    <span class="n">sprite</span><span class="o">.</span><span class="n">position</span><span class="p">,</span>
+    <span class="n">sprite</span><span class="o">.</span><span class="n">width</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">sprite</span><span class="o">.</span><span class="n">height</span><span class="o">//</span><span class="mi">2</span>
+<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Checking-for-collisions-on-each-frame">Checking for collisions on each frame<a class="anchor-link" href="#Checking-for-collisions-on-each-frame">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First of all, make sure to remember that the <code>.cshape</code> property does NOT move around with the sprite. This means that if we move the sprite, but forget to change it's <code>.cshape</code> property collision won't work as we wanted! As such, we need to make sure to update all <code>.cshape</code> properties before checking for collisions.</p>
+<p>We will of course need to check for collisions on each frame. To do this, we will use the <code>schedule()</code> function, which calls the specified function each frame. We schedule a function simply by calling something like:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">schedule</span><span class="p">(</span><span class="n">update</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the update function, we will usually want to update the <code>.cshape</code> properties and check if anything is colliding. Any function called by the <code>schedule()</code> function needs to accept a <code>dt</code> argument, which is the time passed between the last and current call.</p>
+<p>In this example, we will update the player and enemies <code>.cshape</code> properties and check if anything is colliding with the player - if it is, end the game (pop the Scene from the Director).</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">dt</span><span class="p">):</span>
+    <span class="n">player</span><span class="o">.</span><span class="n">cshape</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">position</span>
+    <span class="k">for</span> <span class="n">enemy</span> <span class="ow">in</span> <span class="n">enemies</span><span class="p">:</span>
+        <span class="n">enemy</span><span class="o">.</span><span class="n">cshape</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">enemy</span><span class="o">.</span><span class="n">position</span>
+
+    <span class="n">collisions</span> <span class="o">=</span> <span class="n">collision_manager</span><span class="o">.</span><span class="n">objs_colliding</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">collisions</span><span class="p">:</span>
+        <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Adding-collision-detection-to-our-game">Adding collision detection to our game<a class="anchor-link" href="#Adding-collision-detection-to-our-game">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When creating the player, each of the enemies and the boss, we also need to create it's <code>.cshape</code> property (we will of course use rectangles (<code>cm.AARectShape</code> in our case) and add it to the collision manager. We will only use one collision manager.</p>
+<p>We will also create an <code>update()</code> function which will be called on each frame via the <code>schedule()</code> function. In this function, we will first update all <code>.cshape</code> positions and then check for any collisions with the player. If we find any, we either print &quot;You won!&quot; and close the game (when hitting the boss) or just close the game (when hitting anyone else).</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Full-code">Full code<a class="anchor-link" href="#Full-code">&#182;</a></h2>
+</div>
+
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+
+<span class="kn">from</span> <span class="nn">cocos.actions</span> <span class="kn">import</span> <span class="n">AccelDeccel</span>
+<span class="kn">from</span> <span class="nn">cocos.actions</span> <span class="kn">import</span> <span class="n">Delay</span>
+<span class="kn">from</span> <span class="nn">cocos.actions</span> <span class="kn">import</span> <span class="n">JumpBy</span>
+<span class="kn">from</span> <span class="nn">cocos.actions</span> <span class="kn">import</span> <span class="n">Move</span>
+<span class="kn">from</span> <span class="nn">cocos.actions</span> <span class="kn">import</span> <span class="n">MoveBy</span>
+<span class="kn">from</span> <span class="nn">cocos.actions</span> <span class="kn">import</span> <span class="n">Repeat</span>
+<span class="kn">from</span> <span class="nn">cocos.actions</span> <span class="kn">import</span> <span class="n">Reverse</span>
+<span class="kn">from</span> <span class="nn">cocos.actions</span> <span class="kn">import</span> <span class="n">RotateBy</span>
+<span class="kn">from</span> <span class="nn">pyglet.window</span> <span class="kn">import</span> <span class="n">key</span>
+
+<span class="kn">import</span> <span class="nn">cocos</span>
+<span class="kn">import</span> <span class="nn">cocos.collision_model</span> <span class="kn">as</span> <span class="nn">cm</span>
+<span class="kn">import</span> <span class="nn">resources</span>
+
+
+<span class="k">class</span> <span class="nc">Game</span><span class="p">(</span><span class="n">cocos</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">ColorLayer</span><span class="p">):</span>
+    <span class="n">is_event_handler</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Game</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">collision_manager</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">CollisionManagerBruteForce</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">25</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mi">150</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">cshape</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">AARectShape</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">position</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">width</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">height</span><span class="o">//</span><span class="mi">2</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collision_manager</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">boss</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">boss</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">600</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">cshape</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">AARectShape</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">position</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">width</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="o">.</span><span class="n">height</span><span class="o">//</span><span class="mi">2</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collision_manager</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">boss</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">BatchNode</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span> <span class="o">=</span> <span class="p">[</span><span class="n">cocos</span><span class="o">.</span><span class="n">sprite</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">enemy</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="p">((</span><span class="mi">250</span><span class="p">,</span> <span class="mi">125</span><span class="p">),</span> <span class="p">(</span><span class="mi">550</span><span class="p">,</span> <span class="mi">125</span><span class="p">),</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">325</span><span class="p">),</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">325</span><span class="p">),</span>
+                     <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">475</span><span class="p">),</span> <span class="p">(</span><span class="mi">650</span><span class="p">,</span> <span class="mi">475</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">enem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">):</span>
+            <span class="n">enem</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">num</span><span class="p">]</span>
+            <span class="n">enem</span><span class="o">.</span><span class="n">cshape</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">AARectShape</span><span class="p">(</span>
+                <span class="n">enem</span><span class="o">.</span><span class="n">position</span><span class="p">,</span>
+                <span class="n">enem</span><span class="o">.</span><span class="n">width</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">enem</span><span class="o">.</span><span class="n">height</span><span class="o">//</span><span class="mi">2</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">collision_manager</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">enem</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">enem</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Move</span><span class="p">())</span>
+
+        <span class="n">move_basic</span> <span class="o">=</span> <span class="n">MoveBy</span><span class="p">((</span><span class="mi">120</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">move_basic</span> <span class="o">+</span> <span class="n">Reverse</span><span class="p">(</span><span class="n">move_basic</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">Reverse</span><span class="p">(</span><span class="n">move_basic</span><span class="p">)</span> <span class="o">+</span> <span class="n">move_basic</span><span class="p">))</span>
+
+        <span class="n">move_complex</span> <span class="o">=</span> <span class="p">(</span><span class="n">MoveBy</span><span class="p">((</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+                        <span class="n">Delay</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span>
+                        <span class="n">MoveBy</span><span class="p">((</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="o">-</span><span class="mi">75</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+                        <span class="n">Delay</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span>
+                        <span class="n">MoveBy</span><span class="p">((</span><span class="mi">75</span><span class="p">,</span> <span class="o">-</span><span class="mi">75</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+                        <span class="n">Delay</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span>
+                        <span class="n">MoveBy</span><span class="p">((</span><span class="mi">75</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+                        <span class="n">Delay</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">move_complex</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">Reverse</span><span class="p">(</span><span class="n">move_complex</span><span class="p">)))</span>
+
+        <span class="n">move_jump</span> <span class="o">=</span> <span class="n">AccelDeccel</span><span class="p">(</span><span class="n">JumpBy</span><span class="p">((</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">move_jump_rot</span> <span class="o">=</span> <span class="n">AccelDeccel</span><span class="p">(</span><span class="n">RotateBy</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">move_jump</span> <span class="o">+</span> <span class="n">Reverse</span><span class="p">(</span><span class="n">move_jump</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">move_jump_rot</span> <span class="o">+</span> <span class="n">Reverse</span><span class="p">(</span><span class="n">move_jump_rot</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">Reverse</span><span class="p">(</span><span class="n">move_jump</span><span class="p">)</span> <span class="o">+</span> <span class="n">move_jump</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">Repeat</span><span class="p">(</span><span class="n">Reverse</span><span class="p">(</span><span class="n">move_jump_rot</span><span class="p">)</span> <span class="o">+</span> <span class="n">move_jump_rot</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">cshape</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">position</span>
+        <span class="k">for</span> <span class="n">enem</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">enemies</span><span class="p">:</span>
+            <span class="n">enem</span><span class="o">.</span><span class="n">cshape</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">enem</span><span class="o">.</span><span class="n">position</span>
+
+        <span class="n">collisions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">collision_manager</span><span class="o">.</span><span class="n">objs_colliding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">collisions</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boss</span> <span class="ow">in</span> <span class="n">collisions</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">&quot;You won!&quot;</span><span class="p">)</span>
+            <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_key_press</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">LEFT</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">UP</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span>
+        <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">DOWN</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">speed</span>
+        <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">SPACE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">650</span><span class="p">,</span>
+        <span class="n">caption</span><span class="o">=</span><span class="s">&quot;Catch your husband!&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">game_layer</span> <span class="o">=</span> <span class="n">Game</span><span class="p">()</span>
+    <span class="n">game_scene</span> <span class="o">=</span> <span class="n">cocos</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">Scene</span><span class="p">(</span><span class="n">game_layer</span><span class="p">)</span>
+
+    <span class="n">cocos</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">director</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">game_scene</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="What-comes-next?">What comes next?<a class="anchor-link" href="#What-comes-next?">&#182;</a></h1>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With collision detection, we can finally play our game and actually win or lose it (albeit with a very anti-climatic &quot;You won!&quot; print to the console while the game closes). Next on the list is adding menus with some simple options (FPS counter, fullscreen switch), which will allow us to nicely start (and re-start, as we just know everyone will want another crack at catching that pesky husband :) ) the game and give it a more &quot;finished&quot; feeling all over.</p>
+</div>

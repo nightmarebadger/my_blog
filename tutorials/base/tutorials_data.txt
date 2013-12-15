@@ -38,4 +38,14 @@
         "source-download-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials/archive/master.zip",
         "keywords": 'cocos2d, basic',
     },
+    "Cocos2d - basic tutorial, part 3": {
+        "description": """<p>We will add collision detection, finally turning
+                          our application into a game.</p>
+                       """,
+        "date": date(2013, 12, 15),
+        "filename": "cocos2d_basic_3.html",
+        "source-repository-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials",
+        "source-download-link": "https://github.com/nightmarebadger/pyglet-and-cocos2d-tutorials/archive/master.zip",
+        "keywords": 'cocos2d, basic',
+    },
 }
