@@ -1,12 +1,11 @@
 ---
 categories: python
-date: 2013/12/16 20:15:00
+date: 2013/12/16 22:20:00
 title: Python in the wide world week - day 1, XBMC
-draft: True
 ---
 
 In an effort to actually post something here, I have decided to do a series of
-"XXX week" posts. Starting off with a Python in the wide world week, I'll be
+"XXX week" posts. Starting off with a "Python in the wide world week", I'll be
 exploring some interesting places where Python is used in the real world.
 
 ## [XBMC]
@@ -25,7 +24,7 @@ distributions, Mac OSX, Android, Raspberry Pi, iOS, Apple TV and Apple TV 2
 XMBC also features it's own (Ubuntu based) Linux distribution so you can easily
 carry XBMC on your USB key/disk if you wish so.
 
-[XBMC] became so popular that it spawned [countless
+[XBMC] became so popular that it spawned [loads of
 forks](http://wiki.xbmc.org/index.php?title=Third-party_forks_and_derivatives),
 many of which are now separate products with many users.
 
