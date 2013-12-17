@@ -1,12 +1,26 @@
 div, p {
-    /*font-family: Georgia, 'Times New Roman', Times, serif;*/
-    /*font-family: 'Roboto', sans-serif;*/
     font-family: 'Roboto', serif;
 }
 
 h1, h2, h3, h4, h5, h6,
 nav, .navbar-header, .nav {
     font-family: 'Roboto Slab', sans-serif;
+}
+
+div.input_area, pre {
+    background: #EFEFEF;
+}
+
+body {
+    background: #FCFCFC;
+}
+
+.well {
+    background-image: linear-gradient(to bottom,#e8e8e8 0,#EFEFEF 100%);
+}
+
+a {
+    color: #3580C2;
 }
 
 ul.sidebar {
