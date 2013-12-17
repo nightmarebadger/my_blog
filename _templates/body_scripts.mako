@@ -65,6 +65,12 @@ init_mathjax = function() {
 }
 init_mathjax();
 </script>
+
+<script src="${bf.util.site_path_helper('js/emoticons/jquery.cssemoticons.min.js')}" type="text/javascript"></script>
+<script>
+  $("article").children().not("#disqus_thread, script, noscript").emoticonize({animate: false});
+</script>
+
 <!--[if lt IE 7 ]>
 <script src="js/libs/dd_belatedpng.js"></script>
 <script> DD_belatedPNG.fix('img, .png_bg');</script>
