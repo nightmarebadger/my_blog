@@ -48,5 +48,6 @@
     <link rel="stylesheet" href="${bf.util.site_path_helper('css/custom-notebook.css')}" />
   % endif
 
+  <link href='http://fonts.googleapis.com/css?family=Roboto|Roboto+Slab' rel='stylesheet' type='text/css'>
 
   <%include file="theme.mako"/>
