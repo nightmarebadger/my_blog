@@ -147,6 +147,11 @@ p.source-links {
  *       depending on screen size
  */
 
+article.tutorials_index {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 article.tutorials_index div.well h3 {
     margin-top: 0;
 }

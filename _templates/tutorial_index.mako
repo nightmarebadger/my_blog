@@ -1,6 +1,5 @@
 <%inherit file="_templates/site.mako" />
-<article class="tutorials_index">
-
+<article class="tutorials_index row">
     <div id="grid" data-columns>
         % for name, data in sorted(tutorials_data.iteritems(), key = lambda x: x[1]['date'], reverse = True):
             <div class="well">
