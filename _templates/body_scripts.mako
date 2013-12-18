@@ -15,6 +15,7 @@
 <script src="${bf.util.site_path_helper('js/jquery-1.10.2.min.js')}"></script>
 <script src="${bf.util.site_path_helper('js/bootstrap.min.js')}"></script>
 <script src="${bf.util.site_path_helper('js/plugins.js')}"></script>
+<script src="${bf.util.site_path_helper('js/salvattore.min.js')}"></script>
 
 <script>
   var toc = $("#toc ol");

@@ -1,3 +1,11 @@
+/**
+ * BASE SETTINGS
+ *     - Basic colors
+ *     - Basic fonts
+ *     - Headers
+ *     - Blockquotes
+ */
+
 div, p {
     font-family: 'Roboto', serif;
 }
@@ -23,78 +31,18 @@ a {
     color: #3580C2;
 }
 
-ul.sidebar {
-    padding-left: 15px;
-}
-.sidebar h4 {
-    margin-top: 0;
-}
-p.post-author {
-    display: inline-block;
-    padding: 5px;
-    margin: 0px;
-    margin-top: 10px;
-}
-
-#toc ol {
-    counter-reset: item;
-}
-#toc > ol {
-    margin: 0px;
-    padding: 5px;
-}
-#toc li {
-    display: block;
-}
-#toc li:before {
-    content: counters(item, ".") ". ";
-    counter-increment: item;
-}
-.centered {
-    text-align: center;
-}
-p.toctitle {
-    font-weight: bold;
-    margin-bottom: 0;
-}
-p.toctitle span {
-    font-weight: normal;
-    font-size: 80%;
-}
-article.tutorial_box p.source-links {
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
-article.tutorials_index div.well h3 {
-    margin-top: 0;
-}
-
-article img {
-    display: block;
-    margin: 30px auto;
-    max-width: 100%;
-    height: auto;
-}
-article.tutorial_box figure {
-    display: block;
-    margin: 30px auto;
-}
-article.tutorial_box figure img {
-    margin: 0 auto;
-}
-
-
 h1 {
     margin-top: 35px;
     margin-bottom: 20px;
     border-bottom: 1px solid #eee;
     padding-top: 5px;
 }
+
 h2, h3 {
     margin-top: 30px;
     margin-bottom: 15px;
 }
+
 h4, h5, h6 {
     margin-top: 20px;
 }
@@ -112,7 +60,144 @@ nav .fa {
     padding-right: 5px;
 }
 
-/*Google custom search stuff*/
+
+
+/**
+ * SIDEBAR SETTINGS
+ */
+
+ul.sidebar {
+    padding-left: 15px;
+}
+
+.sidebar h4 {
+    margin-top: 0;
+}
+
+
+
+/**
+ * POST SETTINGS (most also apply to tutorials)
+ *     - ToC numbering
+ *     - ToC visual settings
+ *     - Centered images
+ *     - ...
+ */
+
+p.post-author {
+    display: inline-block;
+    padding: 5px;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+#toc ol {
+    counter-reset: item;
+}
+
+#toc > ol {
+    margin: 0px;
+    padding: 5px;
+}
+
+#toc li {
+    display: block;
+}
+
+#toc li:before {
+    content: counters(item, ".") ". ";
+    counter-increment: item;
+}
+
+p.toctitle {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+p.toctitle span {
+    font-weight: normal;
+    font-size: 80%;
+}
+
+article img {
+    display: block;
+    margin: 30px auto;
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+/**
+ * TUTORIAL SETTINGS
+ *     - Source links settings
+ */
+
+p.source-links {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+
+
+/**
+ * TUTORIALS INDEX SETTINGS
+ *     - Change to headers
+ *     - Rules for Salvattore to nicely stack the tutorials in 1-3 columns,
+ *       depending on screen size
+ */
+
+article.tutorials_index div.well h3 {
+    margin-top: 0;
+}
+
+@media screen and (max-width: 767px) {
+    #grid[data-columns]::before {
+        content: '1 .column.size-1of1';
+    }
+}
+
+@media screen and (min-width: 768px)  and (max-width: 991px) {
+    #grid[data-columns]::before {
+        content: '2 .column.size-1of2';
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #grid[data-columns]::before {
+        content: '3 .column.size-1of3';
+    }
+}
+
+.column {
+    float: left;
+}
+
+.size-1of1 {
+    width: 100%;
+}
+
+.size-1of2 {
+    width: 48%;
+    margin: 1%;
+}
+
+.size-1of3 {
+    width: 30.33%;
+    margin: 1%;
+}
+
+[data-columns]::before { display: none; }
+
+
+
+/**
+ * GOOGLE CUSTOM SEARCH SETTINGS:
+ *     - Overriding the look of CGS because it's broken in Bootstrap. Need to
+ *       use important because there is no other way to override it.
+ *     - Creating a "fake" google search input bar that is in place until the
+ *       real one loads so everything doesn't suddenly jump around.
+ */
 
 #___gcse_0 {
     margin-bottom: 20px;
@@ -121,9 +206,11 @@ nav .fa {
 .gsc-input-box {
     height: auto !important;
 }
+
 td.gsc-input {
     padding-right: 0px !important;
 }
+
 td.gsc-search-button,
 td.gsc-clear-button {
 /*.gsc-input-box td.gsib_b {*/
@@ -144,4 +231,14 @@ td.gsc-clear-button {
     padding: 0px;
     border: 1px solid #D9D9D9;
     height: 28px;
+}
+
+
+
+/**
+ * HELPER CLASSES SETTINGS
+ */
+
+.centered {
+    text-align: center;
 }
