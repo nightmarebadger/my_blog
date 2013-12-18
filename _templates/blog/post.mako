@@ -31,6 +31,9 @@
     <!-- This is needed here so we don't get caught 'inside' the code highlighter when building excrements. I know it's not nice, but it's the only way I could make it work right now and even though it's far from perfect, it doesn't break the site -->
     </pre></tr></tbody></thead></table>
     <!-- End code highlighter workaroung -->
+
+    ${self.post_share()}
+
     <p class="well well-sm post-author">
       Written by: ${post.author or bf.config.site.author}
     </p>
@@ -62,6 +65,15 @@
       </p>
       <ol id="toc-content" class="collapse">
       </ol>
+    </div>
+  '''}
+</%def>
+<%def name="post_share()">
+  ${'''
+    <div id="share-buttons">
+      <div id="twitter" data-text="Share" data-title="Tweet" class="col-xs-4"></div>
+      <div id="facebook" data-text="Share" data-title="Like" class="col-xs-4"></div>
+      <div id="googleplus" data-text="Share" data-title="+1" class="col-xs-4"></div>
     </div>
   '''}
 </%def>

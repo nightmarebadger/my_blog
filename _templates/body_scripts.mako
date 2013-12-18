@@ -16,6 +16,7 @@
 <script src="${bf.util.site_path_helper('js/bootstrap.min.js')}"></script>
 <script src="${bf.util.site_path_helper('js/plugins.js')}"></script>
 <script src="${bf.util.site_path_helper('js/salvattore.min.js')}"></script>
+<script src="${bf.util.site_path_helper('js/jquery.sharrre.min.js')}"></script>
 
 <script>
   var toc = $("#toc ol");
@@ -97,3 +98,43 @@ init_mathjax();
 </script>
 % endif
 
+
+<script>
+$('#twitter').sharrre({
+  share: {
+    twitter: true
+  },
+  enableHover: false,
+  enableTracking: false,
+  buttons: {
+    twitter: {count: 'vertical'}
+  },
+  click: function(api, options){
+    api.simulateClick();
+    api.openPopup('twitter');
+  }
+});
+$('#facebook').sharrre({
+  share: {
+    facebook: true
+  },
+  enableHover: false,
+  enableTracking: false,
+  click: function(api, options){
+    api.simulateClick();
+    api.openPopup('facebook');
+  }
+});
+$('#googleplus').sharrre({
+  share: {
+    googlePlus: true
+  },
+  enableHover: false,
+  enableTracking: false,
+  click: function(api, options){
+    api.simulateClick();
+    api.openPopup('googlePlus');
+  },
+  urlCurl: '/php/sharrre.php'
+});
+</script>

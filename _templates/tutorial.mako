@@ -80,6 +80,12 @@
   <br>
 % endif
 
+<div id="share-buttons">
+  <div id="twitter" data-text="Share" data-title="Tweet" class="col-xs-4"></div>
+  <div id="facebook" data-text="Share" data-title="Like" class="col-xs-4"></div>
+  <div id="googleplus" data-text="Share" data-title="+1" class="col-xs-4"></div>
+</div>
+
 <p class="well well-sm post-author">
   Written by: ${tutorial.get('author', '').decode('utf8') or bf.config.site.author}
 </p>

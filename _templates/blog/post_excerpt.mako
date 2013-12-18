@@ -13,3 +13,6 @@
 <%def name="post_toc()">
 
 </%def>
+<%def name="post_share()">
+
+</%def>
