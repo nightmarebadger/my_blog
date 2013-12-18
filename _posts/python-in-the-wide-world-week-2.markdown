@@ -1,8 +1,7 @@
 ---
 categories: python
-date: 2013/12/17 20:15:00
+date: 2013/12/17 22:27:00
 title: Python in the wide world week - day 2, Dropbox
-draft: True
 ---
 
 Yesterday, at the start of the very first "XXX week", we [looked at
