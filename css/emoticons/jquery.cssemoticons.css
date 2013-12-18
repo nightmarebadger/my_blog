@@ -1,4 +1,4 @@
-/*
+/*!
  * jQuery CSSEmoticons plugin 0.2.9
  *
  * Copyright (c) 2010 Steve Schwartz (JangoSteve)
@@ -9,7 +9,7 @@
  *
  * Date: Sun Oct 22 1:00:00 2010 -0500
  */
- 
+
  /* Basic styles for emoticons */
 span.css-emoticon {
   font-family: "Trebuchet MS"; /* seems to give the best and most consistent emoticon appearance */
@@ -50,8 +50,8 @@ span.css-emoticon {
     rgb(255,221,85) 56%,
     rgb(255,238,170) 100%
   );
-  -webkit-transition-property:color, background, transform;  
-  -webkit-transition-duration: 1s, 1s;  
+  -webkit-transition-property:color, background, transform;
+  -webkit-transition-duration: 1s, 1s;
   -webkit-transition-timing-function: linear, ease-in;
 }
 
@@ -125,7 +125,7 @@ span.css-emoticon.pink-emoticon {
 }
 
 /* styles for emoticons that need no rotation, like O_o */
-span.css-emoticon.no-rotate { 
+span.css-emoticon.no-rotate {
   transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -191,7 +191,7 @@ span.css-emoticon.no-rotate.pink-emoticon {
 }
 
 /* Styles for emoticons that need to be rotated counter-clockwise, like <3 */
-span.css-emoticon.counter-rotated { 
+span.css-emoticon.counter-rotated {
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);

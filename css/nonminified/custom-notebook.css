@@ -1,3 +1,8 @@
+/*!
+    Copied from notebook export head so we get to keep the styling (syntax
+    highlight) with some minor changes
+ */
+
 a.anchor-link:link {
     text-decoration:none;
     padding:0px 10px;
@@ -12,20 +17,6 @@ h5:hover .anchor-link,
 h6:hover .anchor-link {
     visibility: visible;
 }
-
-/*div.prompt {
-    width:11ex;
-    padding:0.4em;
-    margin:0px;
-    font-family:monospace;
-    text-align:right;
-    line-height:1.231em;
-}
-
-div.input_prompt {
-    color:navy;
-    border-top:1px solid transparent;
-}*/
 
 div.prompt {
     display: none;

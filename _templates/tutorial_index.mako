@@ -9,7 +9,7 @@
                 <span class="date">Written on: ${data['date'].strftime("%d %b %Y")}</span>
                 % if bf.config.blog.disqus.enabled:
                     <br>
-                    <!-- This won't work locally but will work on the server. Will keep it local so it you won't jump from local to internet version accidentally, so the number will always be 0 when not running on the server -->
+                    <!-- This won't work locally but will work on the server. Will keep it local so you won't jump from local to internet version accidentally, so the number will always be 0 when not running on the server -->
                     <a href="${data['filename']}#disqus_thread">View Comments</a>
                 % endif
             </div>

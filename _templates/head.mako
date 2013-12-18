@@ -35,17 +35,17 @@
   <link rel="shortcut icon" href="${bf.util.site_path_helper('favicon.ico')}">
   <link rel="apple-touch-icon" href="${bf.util.site_path_helper('img/apple-touch-icon.png')}">
 
-  <link rel="stylesheet" href="${bf.util.site_path_helper(bf.config.filters.syntax_highlight.css_dir,'/pygments_'+bf.config.filters.syntax_highlight.style+'.css')}" type="text/css" />
+  <link rel="stylesheet" href="${bf.util.site_path_helper(bf.config.filters.syntax_highlight.css_dir,'/pygments_'+bf.config.filters.syntax_highlight.style+'.min.css')}" type="text/css" />
 
   <script src="${bf.util.site_path_helper('js/libs/modernizr-1.7.min.js')}"></script>
 
   <link rel="stylesheet" href="${bf.util.site_path_helper('css/bootstrap.min.css')}" />
   <link rel="stylesheet" href="${bf.util.site_path_helper('css/bootstrap-theme.min.css')}" />
-  <link rel="stylesheet" href="${bf.util.site_path_helper('css/custom.css')}" />
+  <link rel="stylesheet" href="${bf.util.site_path_helper('css/custom.min.css')}" />
   <link rel="stylesheet" href="${bf.util.site_path_helper('css/font-awesome/css/font-awesome.min.css')}" />
-  <link rel="stylesheet" href="${bf.util.site_path_helper('css/emoticons/jquery.cssemoticons.css')}" type="text/css"/>
+  <link rel="stylesheet" href="${bf.util.site_path_helper('css/emoticons/jquery.cssemoticons.min.css')}" type="text/css"/>
   % if bf.template_context.render_path.strip('/').startswith('tutorials'):
-    <link rel="stylesheet" href="${bf.util.site_path_helper('css/custom-notebook.css')}" />
+    <link rel="stylesheet" href="${bf.util.site_path_helper('css/custom-notebook.min.css')}" />
   % endif
 
   <link href='http://fonts.googleapis.com/css?family=Roboto|Roboto+Slab' rel='stylesheet' type='text/css'>
