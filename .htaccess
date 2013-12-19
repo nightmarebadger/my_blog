@@ -3,6 +3,29 @@
   Header set Content-Disposition attachment
 </FilesMatch>
 
+#Gzip
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
+</ifmodule>
+#End Gzip
+
+# BEGIN Expire headers
+<ifModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 5 seconds"
+    ExpiresByType image/x-icon "access plus 14 days"
+    ExpiresByType image/jpeg "access plus 14 days"
+    ExpiresByType image/png "access plus 14 days"
+    ExpiresByType image/gif "access plus 14 days"
+    ExpiresByType application/x-shockwave-flash "access plus 14 days"
+    ExpiresByType text/css "access plus 2 hours"
+    ExpiresByType text/javascript "access plus 2 hours"
+    ExpiresByType application/javascript "access plus 2 hours"
+    ExpiresByType application/x-javascript "access plus 2 hours"
+</ifModule>
+# END Expire headers
+
+
 RedirectMatch 404 /Makefile
 
 Options -Indexes
