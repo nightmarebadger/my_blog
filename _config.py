@@ -51,7 +51,7 @@ blog.template_path = "_templates/blog"
 
 ## blog_description -- A short one line description of the blog
 # used in the RSS/Atom feeds.
-blog.description = "Blog with tutorials about Python, web developent and various other interesting topics from the world of computers."
+blog.description = "Blog with tutorials about Python, web development and various other interesting topics from the world of computers."
 
 ## blog_timezone -- the timezone that you normally write your blog posts from
 blog.timezone = "Europe/Ljubljana"
@@ -89,6 +89,7 @@ import locale
 import os
 import shutil
 
+
 def pre_build():
     locale.setlocale(locale.LC_ALL, 'en_US.utf8')
 
@@ -98,9 +99,10 @@ def pre_build():
     else:
         shutil.rmtree("_tmp")
         os.mkdir("_tmp")
-    if os.path.isdir(os.path.join("_site",".git")):
-        shutil.move(os.path.join("_site",".git"),"_tmp")
+    if os.path.isdir(os.path.join("_site", ".git")):
+        shutil.move(os.path.join("_site", ".git"), "_tmp")
+
 
 def build_finally():
-    if os.path.isdir(os.path.join("_tmp",".git")):
-        shutil.move(os.path.join("_tmp",".git"),"_site")
+    if os.path.isdir(os.path.join("_tmp", ".git")):
+        shutil.move(os.path.join("_tmp", ".git"), "_site")
