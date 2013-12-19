@@ -7,9 +7,15 @@
   data.append(('Source repository', tutorial.get('source-repository-link')))
   data.append(('Source download', tutorial.get('source-download-link')))
 
-  data_html = ' | '.join(['<a href="{1}" target="_blank">{0}</a>'.format(
+  ipynb_html = '<a href="{1}">{0}</a>'.format(data[0][0], data[0][1])
+  other_html = ' | '.join(['<a href="{1}" target="_blank">{0}</a>'.format(
                                                                     i[0], i[1])
-                          for i in data if i[1]])
+                          for i in data[1:] if i[1]])
+
+  data_html = ipynb_html
+
+  if other_html:
+      data_html += ' | ' + other_html
 
 %>
 
