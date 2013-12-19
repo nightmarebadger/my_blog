@@ -126,9 +126,13 @@ article img {
     height: auto;
 }
 
-iframe {
+div.blog_post iframe,
+div.tutorial_box iframe {
     margin-bottom: 15px;
     max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
