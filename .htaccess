@@ -28,5 +28,4 @@ AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css a
 
 RedirectMatch 404 /Makefile
 
-Options -Indexes
-DirectoryIndex index.php index.html index.xml /
+DirectoryIndex index.php index.html index.xml
