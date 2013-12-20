@@ -4,8 +4,6 @@ date: 2013/12/18 23:38:00
 title: Python in the wide world week - day 3, Blender
 ---
 
-
-
 ## [Blender]
 
 <a href="http://www.blender.org/"><img src="/images/blender_logo.png" alt="Blender"></a>
@@ -50,10 +48,15 @@ games.
 
 ### Examples of videos
 
-Since Blender is primarily an animation suite, you can find many [great Blender animations](http://www.blenderguru.com/27-inspiring-blender-animations-that-will-make-your-jaw-drop/) on the web.
+Since Blender is primarily an animation suite, you can find many [great Blender
+animations](http://www.blenderguru.com/27-inspiring-blender-animations-that-will-make-your-jaw-drop/)
+on the web.
 
 Every 1-2 years the Blender Foundation announces a new creative project to help
-drive Blender and it's innovation forward. Below you can find it's latest project, the [Tears of Steel](http://mango.blender.org/). Ignore the (imo) so-so acting and (again, imo) not the best story and focus on the animations ;).
+drive Blender and it's innovation forward. Below you can find it's latest
+project, the [Tears of Steel](http://mango.blender.org/). Ignore the (imo)
+so-so acting and (again, imo) not the best story and focus on the animations
+;).
 
 <iframe width="560" height="315" src="//www.youtube.com/embed/OHOpb2fS-cM" frameborder="0" allowfullscreen></iframe>
 
