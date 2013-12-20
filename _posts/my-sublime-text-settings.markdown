@@ -1,7 +1,6 @@
 ---
 categories: sublime text, programming tools, editors
 date: 2013/12/08 22:00:00
-tags: sublime text 2
 title: My Sublime Text 2 settings
 ---
 
