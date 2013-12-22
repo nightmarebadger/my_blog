@@ -8,77 +8,162 @@
 
 <url>
   <loc>http://www.natan.termitnjak.net/</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.natan.termitnjak.net/blog/</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.natan.termitnjak.net/blog/category/</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.natan.termitnjak.net/tutorials/</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.natan.termitnjak.net/blog/archive/</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.natan.termitnjak.net/about.html</loc>
-  <lastmod>2013-11-14T13:01:01+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>http://www.natan.termitnjak.net/blog/2013/11/11/battle-of-the-editors-sublime-text-2/</loc>
-  <lastmod>2013-11-14T12:55:45+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <loc>http://www.natan.termitnjak.net/blog/2013/12/22/python-in-the-wide-world-week-day-7-the-web/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>http://www.natan.termitnjak.net/blog/2013/11/07/welcome-to-the-blog/</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <loc>http://www.natan.termitnjak.net/blog/2013/12/21/python-in-the-wide-world-week-day-6-science/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/2013/12/20/python-in-the-wide-world-week-day-5-youtube/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/2013/12/19/python-in-the-wide-world-week-day-4-eve-online/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/2013/12/18/python-in-the-wide-world-week-day-3-blender/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/tutorials/cocos2d_basic_3.html</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/tutorials/cocos2d_basic_2.html</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.natan.termitnjak.net/tutorials/cocos2d_basic_1.html</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.natan.termitnjak.net/tutorials/pyglet_basic.html</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/category/python/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.natan.termitnjak.net/blog/category/editors/</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.natan.termitnjak.net/blog/category/programming-tools/</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.natan.termitnjak.net/blog/category/sublime-text/</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.natan.termitnjak.net/blog/category/welcome/</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/archive/2013/12/1/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>http://www.natan.termitnjak.net/blog/archive/2013/11/1/</loc>
-  <lastmod>2013-11-13T10:43:43+00:00</lastmod>
-  <changefreq>weekly</changefreq>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/page/2/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/2013/12/17/python-in-the-wide-world-week-day-2-dropbox/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/2013/12/16/python-in-the-wide-world-week-day-1-xbmc/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/2013/12/08/my-sublime-text-2-settings/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/2013/11/11/battle-of-the-editors-sublime-text-2/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/2013/11/07/welcome-to-the-blog/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/category/python/2/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/archive/2013/12/2/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/page/1/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://www.natan.termitnjak.net/blog/category/python/1/</loc>
+  <lastmod>2013-12-22T20:30:37+00:00</lastmod>
+  <changefreq>daily</changefreq>
 </url>
 </urlset>
