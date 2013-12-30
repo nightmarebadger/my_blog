@@ -29,3 +29,8 @@ AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css a
 RedirectMatch 404 /Makefile
 
 DirectoryIndex index.php index.html index.xml
+
+<IfModule pagespeed_module>
+    ModPagespeed on
+    ModPagespeedEnableFilters remove_comments,rewrite_css,rewrite_images,move_css_to_head,rewrite_javascript
+</IfModule>
