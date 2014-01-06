@@ -5,7 +5,7 @@ title: Python in the wide world week - day 1, XBMC
 ---
 
 In an effort to actually post something here, I have decided to do a series of
-"XXX week" posts. Starting off with a "Python in the wide world week", I'll be
+"X week" posts. Starting off with a "Python in the wide world week", I'll be
 exploring some interesting places where Python is used in the real world.
 
 ## [XBMC]

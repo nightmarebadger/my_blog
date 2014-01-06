@@ -4,7 +4,7 @@ date: 2013/12/17 22:27:00
 title: Python in the wide world week - day 2, Dropbox
 ---
 
-Yesterday, at the start of the very first "XXX week", we [looked at
+Yesterday, at the start of the very first "X week", we [looked at
 XBMC](/blog/2013/12/16/python-in-the-wide-world-week-day-1-xbmc/). Today, we
 will look at [Dropbox], a could storage file synchronisation service.
 
